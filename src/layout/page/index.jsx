@@ -1,3 +1,4 @@
+import Block from './page.styled';
 import Header from '../header';
 import React from 'react';
 
@@ -10,10 +11,12 @@ class Page extends React.Component {
   render() {
     
     return (
-      <>
+      <Block>
         <Header />
-        {this._children}
-      </>
+        <Block.Main>
+          {this._children}
+        </Block.Main>
+      </Block>
     )
   }
 }

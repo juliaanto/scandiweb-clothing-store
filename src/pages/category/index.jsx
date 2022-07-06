@@ -5,7 +5,6 @@ class Category extends React.Component {
   render() {
     return (
       <Page>
-        <p>category</p>
       </Page>
     )
   }
