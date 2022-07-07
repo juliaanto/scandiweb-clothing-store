@@ -6,6 +6,7 @@ const Block = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 77px;
 `;
 
 Block.Logo = styled(IconLogo)`

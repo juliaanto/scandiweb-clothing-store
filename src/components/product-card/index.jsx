@@ -4,7 +4,6 @@ import React from 'react';
 class ProductCard extends React.Component {
   render() {
     const product = this.props.product;
-    console.log(product);
     
     return (
       <Block>

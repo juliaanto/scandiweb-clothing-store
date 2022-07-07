@@ -1,3 +1,5 @@
+import { fetchCategoriesAction, fetchProductsAction } from './store/api-actions';
+
 import { ApolloProvider } from '@apollo/client';
 import App from './app';
 import { Provider } from 'react-redux';
@@ -5,7 +7,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import client from './services/client';
 import { configureStore } from '@reduxjs/toolkit';
-import { fetchProductsAction } from './store/api-actions';
 import { redirect } from './store/middlewares/redirect';
 import reportWebVitals from './reportWebVitals';
 import { rootReducer } from './store/root-reducer';
@@ -20,8 +21,8 @@ const store = configureStore({
   }).concat(redirect),
 });
 
-
 store.dispatch(fetchProductsAction());
+store.dispatch(fetchCategoriesAction());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

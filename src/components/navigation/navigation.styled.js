@@ -1,15 +1,16 @@
 import styled, {css} from 'styled-components';
 
-const Block = styled.nav`
+const Block = styled.ul`
   display: flex;
   flex-wrap: wrap;
   width: 10%;
   flex-grow: 1;
 `;
 
-Block.Link = styled.a`
+Block.Item = styled.li`
   text-transform: uppercase;
   padding: 21px 16px 32px;
+  cursor: pointer;
 
   ${({ $isCurrent, theme }) =>
     $isCurrent &&

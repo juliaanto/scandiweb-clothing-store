@@ -1,8 +1,11 @@
+import { changeCurrentCategory, loadCategories, loadProducts } from '../action';
+
 import { createReducer } from '@reduxjs/toolkit'
-import { loadProducts } from '../action';
 
 const initialState = {
   products: [],
+  categories: [],
+  currentCategory: '',
 }
 
 const shopData = createReducer(initialState, (builder) => {
@@ -11,6 +14,17 @@ const shopData = createReducer(initialState, (builder) => {
       const {products} = action.payload;
 
       state.products = products;
+    })
+    .addCase(loadCategories, (state, action) => {
+      const {categories} = action.payload;
+
+      state.categories = categories;
+      state.currentCategory = categories[0].name;
+    })
+    .addCase(changeCurrentCategory, (state, action) => {
+      const {category} = action.payload;
+
+      state.currentCategory = category;
     });
 });
 

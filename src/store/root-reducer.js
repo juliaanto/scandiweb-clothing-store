@@ -3,7 +3,7 @@ import { shopData } from './shop-data/shop-data';
 
 export const NameSpace = {
   ShopData: 'DATA',
-  UserActions: 'USER',
+  UserProcess: 'USER',
 }
 
 export const rootReducer = combineReducers({

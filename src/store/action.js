@@ -8,4 +8,22 @@ export const loadProducts = createAction(
       products,
     }
   })
-)
+);
+
+export const loadCategories = createAction(
+  ActionType.LoadCategories,
+  (categories) => ({
+    payload: {
+      categories,
+    }
+  })
+);
+
+export const changeCurrentCategory = createAction(
+  ActionType.ChangeCurrentCategory,
+  (category) => ({
+    payload: {
+      category,
+    }
+  })
+);
