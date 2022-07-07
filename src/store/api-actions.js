@@ -2,24 +2,32 @@ import { loadCategories, loadProducts } from './action';
 
 import { gql } from '@apollo/client';
 
-export const fetchProductsAction = () =>
+export const fetchProductsAction = (currentCategory) =>
   async (dispatch, _getState, client) => {
     try {
       await client
       .query({
         query: gql`
-          query GetCategory {
-            category {
+        query GetCategory {
+          category (
+            input: {title: "${currentCategory}"}
+          ) {
+            products {
+              id
               name
-              products {
-                id
-                name
-                gallery
-                inStock
-                brand
+              gallery
+              inStock
+              brand
+              prices { 
+                currency {
+                  label
+                }
+                amount
               }
+      
             }
           }
+        }
         `,
       })
       .then(result => dispatch(loadProducts(result.data.category.products)));

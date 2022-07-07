@@ -3,6 +3,7 @@ import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
 import { changeCurrentCategory } from '../../store/action';
 import { connect } from 'react-redux';
+import { fetchProductsAction } from '../../store/api-actions';
 
 const mapStateToProps = (state) => {
   const { categories, currentCategory } = state[NameSpace.ShopData];
@@ -12,6 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onCategoryChange(currentCategory) {
     dispatch(changeCurrentCategory(currentCategory));
+    dispatch(fetchProductsAction(currentCategory));
   },
 });
 

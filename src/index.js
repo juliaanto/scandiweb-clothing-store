@@ -21,8 +21,8 @@ const store = configureStore({
   }).concat(redirect),
 });
 
-store.dispatch(fetchProductsAction());
 store.dispatch(fetchCategoriesAction());
+store.dispatch(fetchProductsAction(''));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
