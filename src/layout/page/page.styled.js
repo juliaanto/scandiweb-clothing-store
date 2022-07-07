@@ -7,6 +7,7 @@ const Block = styled.div`
 `;
 
 Block.Main = styled.main`
+  padding-top: 89px;
 `;
 
 
