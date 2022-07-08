@@ -36,6 +36,24 @@ const Button = styled.button`
             fill: ${({ theme }) => theme.color.specialDark};;
           }
         `;
+
+      case 'add-to-cart':
+        return css`
+          position: absolute;
+          width: 52px;
+          height: 52px;
+          background-color: ${({ theme }) => theme.color.basicGreen};;
+          border-radius: 50%;
+          top: 320px;
+          right: 30px;
+          z-index: 1;
+
+          & svg {
+            fill: ${({ theme }) => theme.color.basicWhite};
+            width: 24px;
+            height: 24px;
+          }
+        `;
       default:
         return css`
         `;
@@ -58,6 +76,10 @@ const Button = styled.button`
           & svg {
             fill: ${({ theme }) => theme.color.basicGrey};
           }
+        `;
+      case 'add-to-cart':
+        return css`
+          background-color: ${({ theme }) => theme.color.specialGreen};;
         `;
       default:
         return css`

@@ -6,7 +6,7 @@ const Block = styled.div`
 Block.Title = styled.h1`
   font-size: 42px;
   font-weight: 400;
-  margin-bottom: 128px;
+  margin-bottom: 113px;
 
   &::first-letter {
     text-transform: capitalize;
@@ -16,9 +16,9 @@ Block.Title = styled.h1`
 Block.List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   column-gap: 40px;
-  row-gap: 100px;
+  row-gap: 108px;
+  margin: 0 auto;
 `;
 
 export default Block;

@@ -13,7 +13,7 @@ class Button extends React.Component {
     return (
       <StyledButton $styleType={this.styleType} $isCurrencyOpen={this.isCurrencyOpen}>
         {this.styleType === 'currency' && '$'}
-        {this.styleType === 'cart' && <IconCart />}
+        {this.styleType === 'cart' | this.styleType === 'add-to-cart' && <IconCart />}
       </StyledButton>
     )
   }
