@@ -3,17 +3,17 @@ import React from 'react';
 import StyledButton from './button.styled';
 
 class Button extends React.Component {
-  constructor({$styleType, $isCurrencyOpen}) {
-    super();
-    this.styleType = $styleType;
-    this.isCurrencyOpen = $isCurrencyOpen;
-  }
-
   render() {
     return (
-      <StyledButton $styleType={this.styleType} $isCurrencyOpen={this.isCurrencyOpen}>
-        {this.styleType === 'currency' && '$'}
-        {this.styleType === 'cart' | this.styleType === 'add-to-cart' && <IconCart />}
+      <StyledButton 
+        $styleType={this.props.$styleType} 
+        $isCurrencyOpen={this.props.$isCurrencyOpen} 
+        onClick={this.props.onClick}
+        id={this.props.$styleType}
+      >
+        {this.props.$styleType === 'currency' && this.props.$currentCurrency}
+        {this.props.$styleType === 'cart' && <IconCart />}
+        {this.props.$styleType === 'add-to-cart' && <IconCart />}
       </StyledButton>
     )
   }

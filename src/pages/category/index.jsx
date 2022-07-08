@@ -11,7 +11,6 @@ const mapStateToProps = (state) => {
 }
 
 class Category extends React.Component {
-  
   render() {
     const products = this.props.products;
     const currentCategory = this.props.currentCategory;

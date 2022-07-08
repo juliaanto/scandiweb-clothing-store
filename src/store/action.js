@@ -27,3 +27,21 @@ export const changeCurrentCategory = createAction(
     }
   })
 );
+
+export const loadCurrencies = createAction(
+  ActionType.LoadCurrencies,
+  (currencies) => ({
+    payload: {
+      currencies,
+    }
+  })
+);
+
+export const changeCurrentCurrency = createAction(
+  ActionType.ChangeCurrentCurrency,
+  (currency) => ({
+    payload: {
+      currency,
+    }
+  })
+);

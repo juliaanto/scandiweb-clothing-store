@@ -1,4 +1,4 @@
-import { loadCategories, loadProducts } from './action';
+import { loadCategories, loadCurrencies, loadProducts } from './action';
 
 import { gql } from '@apollo/client';
 
@@ -50,6 +50,25 @@ export const fetchCategoriesAction = () =>
         `,
       })
       .then(result => dispatch(loadCategories(result.data.categories)));
+    } catch (error) {
+  }
+};
+
+export const fetchCurrenciesAction = () =>
+  async (dispatch, _getState, client) => {
+    try {
+      await client
+      .query({
+        query: gql`
+          query GetCurrencies {
+            currencies {
+              label
+              symbol
+            }
+          }
+        `,
+      })
+      .then(result => dispatch(loadCurrencies(result.data.currencies)));
     } catch (error) {
   }
 };

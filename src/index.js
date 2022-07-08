@@ -1,4 +1,4 @@
-import { fetchCategoriesAction, fetchProductsAction } from './store/api-actions';
+import { fetchCategoriesAction, fetchCurrenciesAction, fetchProductsAction } from './store/api-actions';
 
 import { ApolloProvider } from '@apollo/client';
 import App from './app';
@@ -23,6 +23,7 @@ const store = configureStore({
 
 store.dispatch(fetchCategoriesAction());
 store.dispatch(fetchProductsAction(''));
+store.dispatch(fetchCurrenciesAction());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
