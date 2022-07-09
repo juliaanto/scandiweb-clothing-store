@@ -21,6 +21,7 @@ export const fetchProductsAction = (currentCategory) =>
               prices { 
                 currency {
                   label
+                  symbol
                 }
                 amount
               }
