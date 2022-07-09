@@ -1,4 +1,4 @@
-import Block from './currency-selector.styled';
+import Block from './currency-switcher-list.styled';
 import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-class CurrencySelector extends React.Component {
+class CurrencySwitcherList extends React.Component {
   render() {
     if (!this.props.isOpen) {
       return null;
@@ -41,4 +41,4 @@ class CurrencySelector extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CurrencySelector);
+export default connect(mapStateToProps, mapDispatchToProps)(CurrencySwitcherList);
