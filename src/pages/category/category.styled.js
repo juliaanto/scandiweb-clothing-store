@@ -6,6 +6,7 @@ const Block = styled.div`
 Block.Title = styled.h1`
   font-size: 42px;
   font-weight: 400;
+  margin-top: 10px;
   margin-bottom: 113px;
 
   &::first-letter {

@@ -42,7 +42,7 @@ const Button = styled.button`
           position: absolute;
           width: 52px;
           height: 52px;
-          background-color: ${({ theme }) => theme.color.basicGreen};;
+          background-color: ${({ theme }) => theme.color.basicGreen};
           border-radius: 50%;
           top: 320px;
           right: 30px;
@@ -56,6 +56,14 @@ const Button = styled.button`
         `;
       default:
         return css`
+          background-color: ${({ theme }) => theme.color.basicGreen};
+          color: ${({ theme }) => theme.color.basicWhite};
+          text-transform: uppercase;
+          font-weight: 600;
+          font-size: 16px;
+          width: 100%;
+          padding-top: 16px;
+          padding-bottom: 16px;
         `;
     }
   }}

@@ -9,8 +9,8 @@ const Block = styled.div`
 `;
 
 Block.Main = styled.main`
-  padding-top: 90px;
-  padding-bottom: 90px;
+  padding-top: 78px;
+  padding-bottom: 80px;
 `;
 
 

@@ -1,4 +1,4 @@
-import { loadCategories, loadCurrencies, loadProducts } from './action';
+import { loadCategories, loadCurrencies, loadProduct, loadProducts } from './action';
 
 import { gql } from '@apollo/client';
 
@@ -71,5 +71,37 @@ export const fetchCurrenciesAction = () =>
       })
       .then(result => dispatch(loadCurrencies(result.data.currencies)));
     } catch (error) {
+  }
+};
+
+export const fetchProductAction = (productId) =>
+  async (dispatch, _getState, client) => {
+    try {
+      await client
+      .query({
+        query: gql`
+          query GetProduct {
+            product (
+              id: "${productId}"
+            ) {
+              name
+              brand
+              gallery
+              attributes {
+                id
+                name
+                type
+                items {
+                  displayValue
+                }
+              }
+              description
+              }
+            }
+          `,
+      })
+      .then(result => dispatch(loadProduct(result.data.product)));
+    } catch (error) {
+
   }
 };

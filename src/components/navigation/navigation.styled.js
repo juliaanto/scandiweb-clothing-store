@@ -1,13 +1,15 @@
 import styled, {css} from 'styled-components';
 
-const Block = styled.ul`
+import { Link } from 'react-router-dom';
+
+const Block = styled.nav`
   display: flex;
   flex-wrap: wrap;
   width: 10%;
   flex-grow: 1;
 `;
 
-Block.Item = styled.li`
+Block.Item = styled(Link)`
   text-transform: uppercase;
   padding: 21px 16px 32px;
   cursor: pointer;

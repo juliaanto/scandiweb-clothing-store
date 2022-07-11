@@ -45,3 +45,12 @@ export const changeCurrentCurrency = createAction(
     }
   })
 );
+
+export const loadProduct = createAction(
+  ActionType.LoadProduct,
+  (product) => ({
+    payload: {
+      product,
+    }
+  })
+);

@@ -1,3 +1,4 @@
+import { AppRoute } from '../../const';
 import Block from './navigation.styled';
 import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
@@ -26,7 +27,8 @@ class Navigation extends React.Component {
     return (
       <Block>
         {categories.map((item) => (
-          <Block.Item 
+          <Block.Item
+            to={AppRoute.Main}
             key={item.name} 
             $isCurrent={currentCategory === item.name}
             onClick={() => this.props.onCategoryChange(item.name)}

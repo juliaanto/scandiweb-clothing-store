@@ -10,10 +10,12 @@ class Button extends React.Component {
         $isCurrencyOpen={this.props.$isCurrencyOpen} 
         onClick={this.props.onClick}
         id={this.props.$styleType}
+        type='button'
       >
         {this.props.$styleType === 'currency' && this.props.$currentCurrency}
         {this.props.$styleType === 'cart' && <IconCart />}
         {this.props.$styleType === 'add-to-cart' && <IconCart />}
+        {this.props.children}
       </StyledButton>
     )
   }

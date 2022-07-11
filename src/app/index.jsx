@@ -1,4 +1,7 @@
-import { Category } from '../pages';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Category, Product } from '../pages';
+
+import { AppRoute } from '../const';
 import GlobalStyle from '../theme/globalStyle';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -9,7 +12,12 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Category />
+        <BrowserRouter>
+          <Routes>
+            <Route path={AppRoute.Main} element={<Category />} />
+            <Route path={AppRoute.Product} element={<Product />} />
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     )
   }
