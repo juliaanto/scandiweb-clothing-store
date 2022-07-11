@@ -96,6 +96,13 @@ export const fetchProductAction = (productId) =>
                 }
               }
               description
+              prices { 
+                currency {
+                  label
+                  symbol
+                }
+                amount
+              }
               }
             }
           `,

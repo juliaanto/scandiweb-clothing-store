@@ -4,6 +4,7 @@ import { Button } from '../../ui';
 import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
 import { connect } from 'react-redux';
+import { getPrice } from '../../utils/price';
 
 const mapStateToProps = (state) => {
   const { currentCurrency } = state[NameSpace.ShopData];
@@ -11,12 +12,9 @@ const mapStateToProps = (state) => {
 }
 
 class ProductCard extends React.Component {
-  getPrice() {
-    return this.props.product.prices.find((price) => price.currency?.label === this.props.currentCurrency?.label);
-  }
-  
   render() {
     const product = this.props.product;
+    const price = getPrice(this.props.product.prices, this.props.currentCurrency);
     
     return (
       <Block
@@ -26,7 +24,7 @@ class ProductCard extends React.Component {
         <Block.Wrapper $isInStock={product.inStock}>
           <Block.Image src={product.gallery[0]} alt={product.name} width="354" height="330" />
           <Block.Title $isInStock={product.inStock}>{product.brand} {product.name}</Block.Title>
-          <Block.Price $isInStock={product.inStock}>{this.getPrice()?.currency.symbol}{this.getPrice()?.amount}</Block.Price>
+          <Block.Price $isInStock={product.inStock}>{price?.currency.symbol}{price?.amount}</Block.Price>
         </Block.Wrapper>
         <Button $styleType="add-to-cart"/>
       </Block>

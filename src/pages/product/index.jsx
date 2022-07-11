@@ -30,6 +30,10 @@ class Product extends React.Component {
     return id;
   }
 
+  getDescription() {
+    return {__html: this.props.product?.description};
+  }
+
   componentDidMount() {
     this.props.onProductChange(this.getProductId());
   }
@@ -60,7 +64,7 @@ class Product extends React.Component {
         <Block.Сharacteristics>
           <ProductDetails product={this.props.product}/>
           <Button>Add to cart</Button>
-          <Block.Description>Find stunning women's cocktail dresses and party dresses. Stand out in lace and metallic cocktail dresses and party dresses from all your favorite brands.</Block.Description>
+          <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
         </Block.Сharacteristics>
         </Block>
       </Page>

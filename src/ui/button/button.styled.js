@@ -87,14 +87,25 @@ const Button = styled.button`
         `;
       case 'add-to-cart':
         return css`
-          background-color: ${({ theme }) => theme.color.specialGreen};;
+          background-color: ${({ theme }) => theme.color.specialGreen};
         `;
       default:
         return css`
+          background-color: ${({ theme }) => theme.color.specialGreen};
         `;
       }
     }}
-    
+  }
+
+  &:active {
+    ${(props) => {
+    switch (props.$styleType) {
+      default:
+        return css`
+          background-color: ${({ theme }) => theme.color.basicGrey};
+        `;
+      }
+    }}
   }
 `;
 

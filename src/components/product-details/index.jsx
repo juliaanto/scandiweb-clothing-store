@@ -1,9 +1,19 @@
 import Block from './product-details.styled';
+import { NameSpace } from '../../store/root-reducer';
 import { Radio } from '../../ui';
 import React from 'react';
+import { connect } from 'react-redux';
+import { getPrice } from '../../utils/price';
+
+const mapStateToProps = (state) => {
+  const { currentCurrency } = state[NameSpace.ShopData];
+  return { currentCurrency }
+}
 
 class ProductDetails extends React.Component {
   render() {
+    const price = getPrice(this.props.product?.prices, this.props.currentCurrency);
+    
     return (
       <Block>
         <Block.Brand>{this.props.product?.brand}</Block.Brand>
@@ -17,10 +27,10 @@ class ProductDetails extends React.Component {
           ))}
         </Block.Attributes>
         <Block.Title>Price:</Block.Title>
-        <Block.Price>$50.00</Block.Price>
+        <Block.Price>{price?.currency.symbol}{price?.amount}</Block.Price>
       </Block>
     )
   }
 }
 
-export default ProductDetails;
+export default connect(mapStateToProps)(ProductDetails);
