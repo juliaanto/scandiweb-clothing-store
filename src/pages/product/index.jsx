@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentImage: ''};
+    this.state = {currentImage: null};
   }
   
   getProductId() {
@@ -36,12 +36,6 @@ class Product extends React.Component {
 
   componentDidMount() {
     this.props.onProductChange(this.getProductId());
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.product !== this.props.product) {
-      this.setState({currentImage: this.props.product.gallery[0]});
-    }
   }
   
   render() {
@@ -60,10 +54,10 @@ class Product extends React.Component {
             />
           ))}
         </Block.Preview>
-        <Block.Image src={this.state?.currentImage} width={610} alt={this.props.product?.name}/>
+        <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
         <Block.Сharacteristics>
           <ProductDetails product={this.props.product}/>
-          <Button>Add to cart</Button>
+          <Button disabled={!this.props.product?.inStock}>Add to cart</Button>
           <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
         </Block.Сharacteristics>
         </Block>

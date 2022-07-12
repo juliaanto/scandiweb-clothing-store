@@ -103,6 +103,7 @@ export const fetchProductAction = (productId) =>
                 }
                 amount
               }
+              inStock
               }
             }
           `,

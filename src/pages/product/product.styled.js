@@ -17,6 +17,8 @@ Block.PreviewImage = styled.img`
 `;
 
 Block.Image = styled.img`
+  object-fit: contain;
+  align-self: flex-start;
 `;
 
 Block.Сharacteristics = styled.div`

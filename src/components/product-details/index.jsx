@@ -22,7 +22,7 @@ class ProductDetails extends React.Component {
           {this.props.product?.attributes.map((item) => (
             <Block.Attribute key={item.id}>
               <Block.Title>{item.name}:</Block.Title>
-              <Radio attributeType={item.type} attributeName={item.name} attributes={item.items} />
+              <Radio attribute={item} />
             </Block.Attribute>
           ))}
         </Block.Attributes>

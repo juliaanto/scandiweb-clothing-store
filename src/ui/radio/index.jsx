@@ -3,21 +3,23 @@ import React from 'react';
 
 class Radio extends React.Component {
   render() {
+    const attribute = this.props.attribute;
+    
     return (
-      <Block $attributeType={this.props.attributeType}>
-        {this.props.attributes?.map((item) => (
+      <Block $attributeType={attribute.type}>
+        {attribute.items?.map((item) => (
           <Block.Value 
             key={item.displayValue}
-            $attributeType={this.props.attributeType}
+            $attributeType={attribute.type}
           >
             <Block.Input 
               hidden type="radio" 
-              id={this.props.attributeName + item.displayValue} 
-              name={this.props.attributeName} 
+              id={attribute.name + item.displayValue} 
+              name={attribute.name} 
               value={item.displayValue}
-              $attributeType={this.props.attributeType}
+              $attributeType={attribute.type}
             />
-            <Block.Label htmlFor={this.props.attributeName + item.displayValue}>{this.props.attributeType !== 'swatch' && item.displayValue}</Block.Label>
+            <Block.Label htmlFor={attribute.name + item.displayValue}>{attribute.type !== 'swatch' && item.displayValue}</Block.Label>
           </Block.Value>
         ))}
       </Block>

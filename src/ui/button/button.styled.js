@@ -102,6 +102,18 @@ const Button = styled.button`
     switch (props.$styleType) {
       default:
         return css`
+          background-color: ${({ theme }) => theme.color.basicGreen};
+        `;
+      }
+    }}
+  }
+
+  &:disabled {
+    ${(props) => {
+    switch (props.$styleType) {
+      default:
+        return css`
+          cursor: auto;
           background-color: ${({ theme }) => theme.color.basicGrey};
         `;
       }

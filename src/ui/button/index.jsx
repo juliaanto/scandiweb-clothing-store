@@ -11,6 +11,7 @@ class Button extends React.Component {
         onClick={this.props.onClick}
         id={this.props.$styleType}
         type='button'
+        disabled={this.props.disabled}
       >
         {this.props.$styleType === 'currency' && this.props.$currentCurrency}
         {this.props.$styleType === 'cart' && <IconCart />}
