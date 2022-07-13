@@ -84,6 +84,7 @@ export const fetchProductAction = (productId) =>
             product (
               id: "${productId}"
             ) {
+              id
               name
               brand
               gallery
