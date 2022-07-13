@@ -100,6 +100,15 @@ const Button = styled.button`
   &:active {
     ${(props) => {
     switch (props.$styleType) {
+      case 'currency':
+        return css`
+        `;
+      case 'cart':
+        return css`
+        `;
+      case 'add-to-cart':
+        return css`
+        `;
       default:
         return css`
           background-color: ${({ theme }) => theme.color.basicGreen};
