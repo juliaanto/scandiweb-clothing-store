@@ -18,6 +18,7 @@ class Radio extends React.Component {
               name={attribute.name} 
               value={item.displayValue}
               $attributeType={attribute.type}
+              defaultChecked={item.displayValue === attribute.items[0].displayValue}
             />
             <Block.Label htmlFor={attribute.name + item.displayValue}>{attribute.type !== 'swatch' && item.displayValue}</Block.Label>
           </Block.Value>

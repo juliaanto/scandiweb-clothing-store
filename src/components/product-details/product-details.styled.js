@@ -16,19 +16,17 @@ Block.Name = styled.p`
   margin-bottom: 38px;
 `;
 
-Block.Attributes = styled.div`
-  margin-bottom: 38px;
+Block.Attribute = styled.fieldset`
+  border: none;
+  margin-bottom: 23px;
 `;
 
-Block.Attribute = styled.div`
-`;
-
-Block.Title = styled.h3`
+Block.Title = styled.legend`
   font-weight: 700;
   font-size: 18px;
   text-transform: uppercase;
   font-family: 'Roboto Condensed', sans-serif;
-  margin-top: 23px;
+  margin-top: 38px;
 `;
 
 Block.Price = styled.p`

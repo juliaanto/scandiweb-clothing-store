@@ -54,3 +54,12 @@ export const loadProduct = createAction(
     }
   })
 );
+
+export const addProduct = createAction(
+  ActionType.AddProduct,
+  (product) => ({
+    payload: {
+      product,
+    }
+  })
+);

@@ -4,6 +4,7 @@ import { NameSpace } from '../../store/root-reducer';
 import Page from '../../layout/page';
 import { ProductDetails } from '../../components';
 import React from 'react';
+import { addProduct } from '../../store/action';
 import { connect } from 'react-redux';
 import { fetchProductAction } from '../../store/api-actions';
 
@@ -15,6 +16,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   onProductChange(productId) {
     dispatch(fetchProductAction(productId));
+  },
+  onProductAdd(product) {
+    dispatch(addProduct(product));
   },
 });
 
@@ -34,8 +38,26 @@ class Product extends React.Component {
     return {__html: this.props.product?.description};
   }
 
+  handleAddToCartClick(product) {
+    const addedProduct = {...product};
+    const form = document.querySelector("#product-form");
+    const data = new FormData(form);
+
+    let checkedAttributes = {};
+    for (const entry of data.entries()) {
+      checkedAttributes[entry[0]] = entry[1];
+    };
+
+    addedProduct['checkedAttributes'] = checkedAttributes;
+    this.props.onProductAdd(addedProduct);
+  }
+
   componentDidMount() {
     this.props.onProductChange(this.getProductId());
+  }
+
+  componentDidUpdate() {
+    document.title = this.props.product?.brand + ' ' + this.props.product?.name;
   }
   
   render() {
@@ -57,7 +79,7 @@ class Product extends React.Component {
         <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
         <Block.Сharacteristics>
           <ProductDetails product={this.props.product}/>
-          <Button disabled={!this.props.product?.inStock}>Add to cart</Button>
+          <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick(this.props.product)}>Add to cart</Button>
           <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
         </Block.Сharacteristics>
         </Block>

@@ -11,6 +11,10 @@ const mapStateToProps = (state) => {
 }
 
 class Category extends React.Component {
+  componentDidUpdate() {
+    document.title = this.props.currentCategory.charAt(0).toUpperCase() + this.props.currentCategory.slice(1);
+  }
+  
   render() {
     const products = this.props.products;
     const currentCategory = this.props.currentCategory;
