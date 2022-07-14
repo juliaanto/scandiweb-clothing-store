@@ -54,6 +54,28 @@ const Button = styled.button`
             height: 24px;
           }
         `;
+      case 'arrow':
+        return css`
+          position: absolute;
+          background-color: ${({ theme }) => theme.color.basicBlack};
+          width: 24px;
+          height: 24px;
+          right: ${({ $isPrev }) => $isPrev ? '48px' : '16px'};
+          bottom: 16px;
+          opacity: 0.73;
+
+          &:after {
+            position: absolute;
+            content: "";
+            height: 8px;
+            width: 8px;
+            transform: translate(${({ $isPrev }) => $isPrev ? '-30%' : '-75%'}, -50%) rotate(${({ $isPrev }) => $isPrev ? '135deg' : '315deg'});
+            border-bottom: 1.5px solid ${({ theme }) => theme.color.basicWhite};
+            border-right: 1.5px solid ${({ theme }) => theme.color.basicWhite};
+            bottom: center;
+            right: center;
+          }
+        `;
       default:
         return css`
           background-color: ${({ theme }) => theme.color.basicGreen};
@@ -89,6 +111,10 @@ const Button = styled.button`
         return css`
           background-color: ${({ theme }) => theme.color.specialGreen};
         `;
+      case 'arrow':
+        return css`
+          opacity: 0.85;
+        `;
       default:
         return css`
           background-color: ${({ theme }) => theme.color.specialGreen};
@@ -108,6 +134,10 @@ const Button = styled.button`
         `;
       case 'add-to-cart':
         return css`
+        `;
+      case 'arrow':
+        return css`
+          opacity: 0.73;
         `;
       default:
         return css`

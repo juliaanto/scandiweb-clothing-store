@@ -50,7 +50,7 @@ Block.Input = styled.input`
         default:
           return css`
           & + label::before {
-            cursor: ${({$styleType}) => $styleType !== 'product-page' ? 'auto' : 'pointer'};
+            cursor: ${({$styleType}) => $styleType !== 'product-page' ? 'default' : 'pointer'};
             content: "";
             position: absolute;
             width: 100%;
@@ -63,7 +63,7 @@ Block.Input = styled.input`
           } 
 
           &:checked + label {
-            cursor: ${({$styleType}) => $styleType !== 'product-page' ? 'auto' : 'pointer'};
+            cursor: ${({$styleType}) => $styleType !== 'product-page' ? 'default' : 'pointer'};
             color: ${({ theme }) => theme.color.basicWhite};
           } 
           `;

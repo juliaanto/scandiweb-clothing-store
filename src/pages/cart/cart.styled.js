@@ -10,6 +10,10 @@ Block.Title = styled.h1`
 `;
 
 Block.ProductList = styled.ul`
+  border-top: 1px solid ${({ theme }) => theme.color.specialGrey};
+`;
+
+Block.Text = styled.p`
 `;
 
 export default Block;

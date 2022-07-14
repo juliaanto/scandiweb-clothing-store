@@ -7,3 +7,7 @@ export const AppRoute = {
 export const AppLink = {
   ProductById: ((id) => `/product/${id}`),
 }
+
+export const Message = {
+  EmptyCart: 'Your cart is empty',
+}
