@@ -78,7 +78,7 @@ class Product extends React.Component {
         </Block.Preview>
         <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
         <Block.Сharacteristics>
-          <ProductDetails product={this.props.product}/>
+          <ProductDetails product={this.props.product} $styleType='product-page' />
           <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick(this.props.product)}>Add to cart</Button>
           <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
         </Block.Сharacteristics>

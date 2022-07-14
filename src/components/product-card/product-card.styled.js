@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { Link } from 'react-router-dom';
-
-const Block = styled(Link)`
+const Block = styled.li`
   width: 386px;
   padding: 16px;
   display: flex;

@@ -1,7 +1,7 @@
 import Block from './cart.styled';
+import { CartItem } from '../../components';
 import { NameSpace } from '../../store/root-reducer';
 import Page from '../../layout/page';
-import { ProductDetails } from '../../components';
 import React from 'react';
 
 class Cart extends React.Component {
@@ -11,9 +11,11 @@ class Cart extends React.Component {
     return (
       <Page>
         <Block.Title>Cart</Block.Title>
-        {productsInCart.map((product) => (
-          <ProductDetails product={product} key={product.id}/>
-        ))}
+        <Block.ProductList>
+          {productsInCart.map((product) => (
+            <CartItem product={product} key={product.id}/>
+          ))}
+        </Block.ProductList>
       </Page>
     )
   }

@@ -15,17 +15,27 @@ class ProductDetails extends React.Component {
     const price = getPrice(this.props.product?.prices, this.props.currentCurrency);
     
     return (
-      <Block id="product-form">
+      <Block id="product-form" $styleType={this.props.$styleType}>
         <Block.Brand>{this.props.product?.brand}</Block.Brand>
-        <Block.Name>{this.props.product?.name}</Block.Name>
+        <Block.Name $styleType={this.props.$styleType}>{this.props.product?.name}</Block.Name>
+        
+        {this.props.$styleType === 'cart-page' &&
+          <Block.Price>{price?.currency.symbol}{price?.amount}</Block.Price>
+        }
+        
         {this.props.product?.attributes.map((item) => (
-          <Block.Attribute key={item.id}>
+          <Block.Attribute key={item.id} $styleType={this.props.$styleType}>
             <Block.Title>{item.name}:</Block.Title>
-            <Radio attribute={item} />
+            <Radio attribute={item} checkedAttributes={this.props.product?.checkedAttributes} $styleType={this.props.$styleType} />
           </Block.Attribute>
         ))}
-        <Block.Title>Price:</Block.Title>
-        <Block.Price>{price?.currency.symbol}{price?.amount}</Block.Price>
+
+        {this.props.$styleType === 'product-page' &&
+          <>
+            <Block.Title $styleType={this.props.$styleType}>Price:</Block.Title>
+            <Block.Price $styleType={this.props.$styleType}>{price?.currency.symbol}{price?.amount}</Block.Price>
+          </>
+        }
       </Block>
     )
   }
