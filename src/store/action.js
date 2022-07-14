@@ -63,3 +63,10 @@ export const addProduct = createAction(
     }
   })
 );
+
+export const redirectToRoute = createAction(
+  ActionType.RedirectToRoute,
+  (url) => ({
+    payload: url,
+  }),
+);

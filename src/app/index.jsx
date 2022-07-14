@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Category, Product } from '../pages';
+import { Cart, Category, Product, ServerIsUnavailable } from '../pages';
 
 import { AppRoute } from '../const';
-import Cart from '../pages/cart';
 import GlobalStyle from '../theme/globalStyle';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
@@ -18,6 +17,7 @@ class App extends React.Component {
             <Route path={AppRoute.Main} element={<Category />} />
             <Route path={AppRoute.Product} element={<Product />} />
             <Route path={AppRoute.Cart} element={<Cart />} />
+            <Route path={AppRoute.ServerIsUnavailable} element={<ServerIsUnavailable />} />
           </Routes>
         </BrowserRouter>
       </ThemeProvider>

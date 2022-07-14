@@ -2,6 +2,7 @@ export const AppRoute = {
   Main: '/',
   Product: '/product/:id',
   Cart: '/cart',
+  ServerIsUnavailable: '/serverisunavailable',
 }
 
 export const AppLink = {

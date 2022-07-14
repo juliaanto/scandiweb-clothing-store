@@ -1,5 +1,6 @@
-import { loadCategories, loadCurrencies, loadProduct, loadProducts } from './action';
+import { loadCategories, loadCurrencies, loadProduct, loadProducts, redirectToRoute } from './action';
 
+import { AppRoute } from '../const';
 import { gql } from '@apollo/client';
 
 export const fetchProductsAction = (currentCategory) =>
@@ -33,6 +34,7 @@ export const fetchProductsAction = (currentCategory) =>
       })
       .then(result => dispatch(loadProducts(result.data.category.products)));
     } catch (error) {
+      dispatch(redirectToRoute(AppRoute.ServerIsUnavailable));
     }
   };
 
@@ -52,6 +54,7 @@ export const fetchCategoriesAction = () =>
       })
       .then(result => dispatch(loadCategories(result.data.categories)));
     } catch (error) {
+      dispatch(redirectToRoute(AppRoute.ServerIsUnavailable));
   }
 };
 
@@ -71,6 +74,7 @@ export const fetchCurrenciesAction = () =>
       })
       .then(result => dispatch(loadCurrencies(result.data.currencies)));
     } catch (error) {
+      dispatch(redirectToRoute(AppRoute.ServerIsUnavailable));
   }
 };
 
@@ -111,6 +115,6 @@ export const fetchProductAction = (productId) =>
       })
       .then(result => dispatch(loadProduct(result.data.product)));
     } catch (error) {
-
+      dispatch(redirectToRoute(AppRoute.ServerIsUnavailable));
   }
 };
