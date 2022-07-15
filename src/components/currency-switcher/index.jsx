@@ -3,13 +3,12 @@ import { CurrencySwitcherList } from '../../components';
 import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCurrency } from '../../utils/currency';
 
 const modalRootElement = document.querySelector('#modal-root');
 
 const mapStateToProps = (state) => {
-  const { currencies } = state[NameSpace.ShopData];
-  return { currencies }
+  const { currentCurrency } = state[NameSpace.ShopData];
+  return { currentCurrency }
 }
 
 class CurrencySwitcher extends React.Component {
@@ -52,7 +51,7 @@ class CurrencySwitcher extends React.Component {
         <Button 
           $styleType='currency' 
           $isCurrencyOpen={this.state.isCurrencySelectorOpen} 
-          $currentCurrency={getCurrency(this.props.currencies)?.symbol}
+          $currentCurrency={this.props.currentCurrency?.symbol}
           onClick={this.handleClick}
         />
       </>

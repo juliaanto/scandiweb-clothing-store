@@ -4,11 +4,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { changeCurrentCurrency } from '../../store/action';
 import { connect } from 'react-redux';
-import { getCurrency } from '../../utils/currency';
 
 const mapStateToProps = (state) => {
-  const { currencies } = state[NameSpace.ShopData];
-  return { currencies }
+  const { currencies, currentCurrency } = state[NameSpace.ShopData];
+  return { currencies, currentCurrency }
 }
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,23 +17,6 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class CurrencySwitcherList extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      currency: getCurrency(this.props?.currencies)
-    }
-  }
-  
-  setState(state) {
-    window.localStorage.setItem('currency', JSON.stringify(state.currency));
-    super.setState(state);
-  }
-    
-  changeCurrency(currentCurrency) {
-    this.props.onCurrencyChange(currentCurrency);
-    return this.setState({...this.state, currency: currentCurrency});
-  }
-  
   render() {
     if (!this.props.isOpen) {
       return null;
@@ -46,8 +28,8 @@ class CurrencySwitcherList extends React.Component {
           {this.props.currencies.map((item) => (
             <Block.Item 
               key={item.label} 
-              $isCurrent={getCurrency(this.props?.currencies).label === item.label}
-              onClick={() => this.changeCurrency(item)}
+              $isCurrent={this.props.currentCurrency.label === item.label}
+              onClick={() => this.props.onCurrencyChange(item)}
             >
               {item.symbol} {item.label}
             </Block.Item>

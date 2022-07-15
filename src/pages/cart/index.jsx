@@ -20,8 +20,8 @@ class Cart extends React.Component {
         <Block.Title>Cart</Block.Title>
         {productsInCart.length > 0 ?
           <Block.ProductList>
-          {productsInCart.map((product) => (
-            <CartItem product={product} key={product.id}/>
+          {productsInCart.map((product, index) => (
+            <CartItem product={product} key={index}/>
           ))}
         </Block.ProductList>
         :
