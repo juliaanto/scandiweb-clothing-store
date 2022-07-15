@@ -1,5 +1,7 @@
 import { Button } from '../../ui';
+import CartOverlay from '../cart-overlay';
 import { NameSpace } from '../../store/root-reducer';
+import Overlay from '../overlay';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -9,6 +11,19 @@ const mapStateToProps = (state) => {
 }
 
 class CartButton extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isCartOverlayOpen: false 
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState(prevState => ({
+      isCartOverlayOpen: !prevState.isCartOverlayOpen
+    }));
+  }
 
   getProductQuantity(productsInCart) {
     let quantity = 0;
@@ -22,7 +37,16 @@ class CartButton extends React.Component {
   
   render() {
     return (
-      <Button $styleType='cart' productQuantity={this.props.quantityInCart}/>
+      <>
+        <Overlay isOpen={this.state.isCartOverlayOpen} handleClose={() => this.setState({isCartOverlayOpen: false})} buttonId="#cart">
+          <CartOverlay />
+        </Overlay>
+        <Button 
+          $styleType='cart' 
+          productQuantity={this.props.quantityInCart}
+          onClick={this.handleClick}
+        />
+      </>
     )
   }
 }

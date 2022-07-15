@@ -1,10 +1,9 @@
+import { CurrencySwitcherList, Overlay } from '../../components';
+
 import { Button } from '../../ui';
-import { CurrencySwitcherList } from '../../components';
 import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
 import { connect } from 'react-redux';
-
-const modalRootElement = document.querySelector('#modal-root');
 
 const mapStateToProps = (state) => {
   const { currentCurrency } = state[NameSpace.ShopData];
@@ -12,42 +11,26 @@ const mapStateToProps = (state) => {
 }
 
 class CurrencySwitcher extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       isCurrencySelectorOpen: false 
     };
     this.handleClick = this.handleClick.bind(this);
-    this.handleOutsideClick = this.handleOutsideClick.bind(this);
   }
 
-  componentDidMount() {
-    document.addEventListener('click', this.handleOutsideClick);
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleOutsideClick);
-  }
-  
   handleClick() {
     this.setState(prevState => ({
       isCurrencySelectorOpen: !prevState.isCurrencySelectorOpen
     }));
   }
-
-  handleOutsideClick(event) {
-    const currencyElement = document.querySelector('#currency');
-    const isClickInside = currencyElement.contains(event.target);
-
-    if (!isClickInside) {
-      this.setState({isCurrencySelectorOpen: false});
-    }
-  }
   
   render() {
     return (
       <>
-        <CurrencySwitcherList isOpen={this.state.isCurrencySelectorOpen} container={modalRootElement} />
+        <Overlay isOpen={this.state.isCurrencySelectorOpen} handleClose={() => this.setState({isCurrencySelectorOpen: false})} buttonId="#currency">
+          <CurrencySwitcherList />
+        </Overlay>
         <Button 
           $styleType='currency' 
           $isCurrencyOpen={this.state.isCurrencySelectorOpen} 

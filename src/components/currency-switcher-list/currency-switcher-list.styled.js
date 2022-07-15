@@ -1,13 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const Block = styled.div`
-  position: absolute;
-  top: 65px;
-  right: 78px;
-  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
-`;
-
-Block.List = styled.ul`
+const Block = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
