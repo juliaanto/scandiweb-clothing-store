@@ -9,4 +9,5 @@ export const ActionType = {
   RedirectToRoute: 'user/redirectToRoute',
   UpdateProductQuantity: 'user/updateProductQuantity',
   DeleteProductFromCart: 'user/deleteProductFromCart',
+  UpdateQuantityInCart: 'user/updateQuantityInCart',
 }

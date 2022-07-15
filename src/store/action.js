@@ -88,3 +88,12 @@ export const deleteProductFromCart = createAction(
     }
   })
 );
+
+export const updateQuantityInCart = createAction(
+  ActionType.UpdateQuantityInCart,
+  (quantity) => ({
+    payload: {
+      quantity,
+    }
+  })
+);

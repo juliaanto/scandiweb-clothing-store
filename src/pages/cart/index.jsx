@@ -4,10 +4,16 @@ import { Message } from '../../const';
 import { NameSpace } from '../../store/root-reducer';
 import Page from '../../layout/page';
 import React from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = (state) => {
+  const { productsInCart } = state[NameSpace.UserProcess];
+  return { productsInCart }
+}
 
 class Cart extends React.Component {
   render() {
-    const productsInCart = JSON.parse(localStorage.getItem('state'))[NameSpace.UserProcess].productsInCart;
+    const productsInCart = this.props.productsInCart;
     
     return (
       <Page>
@@ -26,4 +32,4 @@ class Cart extends React.Component {
   }
 }
 
-export default Cart;
+export default connect(mapStateToProps)(Cart);

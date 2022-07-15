@@ -31,12 +31,34 @@ const Button = styled.button`
         return css`
           padding-top: 2px;
           height: 100%;
+          position: relative;
 
           & svg {
-            fill: ${({ theme }) => theme.color.specialDark};;
+            fill: ${({ theme }) => theme.color.specialDark};
           }
-        `;
 
+          ${({$quantity}) =>
+            $quantity > 0 &&
+            css`
+              &:after {
+                content: "${({ $quantity }) => $quantity}";
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 20px;
+                width: 20px;
+                background-color: ${({ theme }) => theme.color.basicDark};
+                color: ${({ theme }) => theme.color.basicWhite};
+                border-radius: 50%;
+                font-family: 'Roboto', sans-serif;
+                font-size: 14px;
+                font-weight: 700;
+                top: -7px;
+                right: -12px;
+              }
+            `}
+        `;
       case 'add-to-cart':
         return css`
           position: absolute;
@@ -150,6 +172,10 @@ const Button = styled.button`
         return css`
           & svg {
             fill: ${({ theme }) => theme.color.basicGrey};
+          }
+
+          &:after {
+            background-color: ${({ theme }) => theme.color.basicGrey};
           }
         `;
       case 'add-to-cart':

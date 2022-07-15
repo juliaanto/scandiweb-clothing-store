@@ -1,12 +1,14 @@
+import { addProduct, updateQuantityInCart } from '../../store/action';
+
 import Block from './product.styled';
 import { Button } from '../../ui';
 import { NameSpace } from '../../store/root-reducer';
 import Page from '../../layout/page';
 import { ProductDetails } from '../../components';
 import React from 'react';
-import { addProduct } from '../../store/action';
 import { connect } from 'react-redux';
 import { fetchProductAction } from '../../store/api-actions';
+import { getProductQuantity } from '../../utils/cart';
 
 const mapStateToProps = (state) => {
   const { product } = state[NameSpace.ShopData];
@@ -19,6 +21,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onProductAdd(product) {
     dispatch(addProduct(product));
+    dispatch(updateQuantityInCart(getProductQuantity()));
   },
 });
 

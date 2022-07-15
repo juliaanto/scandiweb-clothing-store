@@ -4,3 +4,4 @@ export {default as CurrencySwitcher} from './currency-switcher';
 export {default as CurrencySwitcherList} from './currency-switcher-list';
 export {default as ProductDetails} from './product-details';
 export {default as CartItem} from './cart-item';
+export {default as CartButton} from './cart-button';

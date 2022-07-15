@@ -1,9 +1,10 @@
-import { addProduct, deleteProductFromCart, updateProductQuantity } from '../action';
+import { addProduct, deleteProductFromCart, updateProductQuantity, updateQuantityInCart } from '../action';
 
 const { createReducer } = require('@reduxjs/toolkit')
 
 const initialState = {
   productsInCart: [],
+  quantityInCart: 0,
 }
 
 const userProcess = createReducer(initialState, (builder) => {
@@ -23,6 +24,11 @@ const userProcess = createReducer(initialState, (builder) => {
 
       const deletedProductIndex = state.productsInCart.findIndex((product) => product.id === productId);
       state.productsInCart.splice(deletedProductIndex, 1);
+    })
+    .addCase(updateQuantityInCart, (state, action) => {
+      const {quantity} = action.payload;
+
+      state.quantityInCart = quantity;
     });
   });
 
