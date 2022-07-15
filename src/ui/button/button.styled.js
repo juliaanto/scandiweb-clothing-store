@@ -76,6 +76,51 @@ const Button = styled.button`
             right: center;
           }
         `;
+      case 'quantity':
+        return css`
+          width: 45px;
+          height: 45px;
+          border: 1px solid ${({ theme }) => theme.color.basicDark};
+          font-size: 50px;
+
+          ${({$isPlus}) =>
+            $isPlus ?
+            css`
+              &::before,
+              &::after {
+                position: absolute;
+                content: "";
+                width: 15px;
+                border-bottom: 1px solid ${({ theme }) => theme.color.basicDark};
+                bottom: center;
+                right: center;
+              }
+
+              &::before {
+                transform: translateX(-50%);
+              }
+              
+              &::after {
+                transform: translateX(-50%) rotate(90deg);
+              }
+            `
+            :
+            css`
+              &::before {
+                position: absolute;
+                content: "";
+                width: 15px;
+                border-bottom: 1px solid ${({ theme }) => theme.color.basicDark};
+                bottom: center;
+                right: center;
+              }
+
+              &::before {
+                transform: translateX(-50%);
+              }
+            `
+          }
+        `;
       default:
         return css`
           background-color: ${({ theme }) => theme.color.basicGreen};
@@ -115,6 +160,10 @@ const Button = styled.button`
         return css`
           opacity: 0.85;
         `;
+      case 'quantity':
+        return css`
+          background-color: ${({ theme }) => theme.color.basicNeutral};
+        `;
       default:
         return css`
           background-color: ${({ theme }) => theme.color.specialGreen};
@@ -138,6 +187,10 @@ const Button = styled.button`
       case 'arrow':
         return css`
           opacity: 0.73;
+        `;
+      case 'quantity':
+        return css`
+          background-color: ${({ theme }) => theme.color.basicWhite};;
         `;
       default:
         return css`

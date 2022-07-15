@@ -12,3 +12,5 @@ export const AppLink = {
 export const Message = {
   EmptyCart: 'Your cart is empty',
 }
+
+export const MAX_PRODUCT_QUANTITY = 99;

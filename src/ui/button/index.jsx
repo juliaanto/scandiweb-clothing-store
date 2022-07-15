@@ -13,6 +13,7 @@ class Button extends React.Component {
         type='button'
         disabled={this.props.disabled}
         $isPrev={this.props.$isPrev}
+        $isPlus={this.props.$isPlus}
       >
         {this.props.$styleType === 'currency' && this.props.$currentCurrency}
         {this.props.$styleType === 'cart' && <IconCart />}

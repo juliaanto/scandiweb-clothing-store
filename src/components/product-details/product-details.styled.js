@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 const Block = styled.form`
   width: ${({$styleType}) => $styleType === 'cart-page' ? '50%' : '292px'};
+  flex-grow: 1;
 `;
 
 Block.Brand = styled.h2`

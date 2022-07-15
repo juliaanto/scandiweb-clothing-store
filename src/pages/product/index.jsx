@@ -49,6 +49,7 @@ class Product extends React.Component {
     };
 
     addedProduct['checkedAttributes'] = checkedAttributes;
+    addedProduct['quantity'] = 1;
     this.props.onProductAdd(addedProduct);
   }
 

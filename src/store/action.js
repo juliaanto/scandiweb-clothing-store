@@ -70,3 +70,21 @@ export const redirectToRoute = createAction(
     payload: url,
   }),
 );
+
+export const updateProductQuantity = createAction(
+  ActionType.UpdateProductQuantity,
+  (productId, quantity) => ({
+    payload: {
+      productId, quantity,
+    }
+  })
+);
+
+export const deleteProductFromCart = createAction(
+  ActionType.DeleteProductFromCart,
+  (productId) => ({
+    payload: {
+      productId,
+    }
+  })
+);
