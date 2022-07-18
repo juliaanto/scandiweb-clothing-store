@@ -7,3 +7,4 @@ export {default as CartItem} from './cart-item';
 export {default as CartButton} from './cart-button';
 export {default as Overlay} from './overlay';
 export {default as CartOverlay} from './cart-overlay';
+export {default as CartList} from './cart-list';

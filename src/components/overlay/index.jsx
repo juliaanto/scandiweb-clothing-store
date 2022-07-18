@@ -19,8 +19,9 @@ class Overlay extends React.Component {
   }
   
   handleOutsideClick(event) {
-    const overlayElement = document.querySelector(this.props.buttonId);
-    const isClickInside = overlayElement?.contains(event.target);
+    const buttonElement = document.querySelector(this.props.buttonId);
+    const overlayElement = document.querySelector('#cart-overlay');
+    const isClickInside = overlayElement?.contains(event.target) || buttonElement?.contains(event.target);
 
     if (!isClickInside) {
       this.props.handleClose();
@@ -31,10 +32,12 @@ class Overlay extends React.Component {
     if (!this.props.isOpen) {
       return null;
     }
-    
+
     return ReactDOM.createPortal (
-      <Block id='overlay'>
-        {this.props.children}
+      <Block $isCartOverlay={this.props.$isCartOverlay}>
+        <Block.Wrapper>
+          {this.props.children}
+        </Block.Wrapper>
       </Block>,
       modalRootElement,
     )

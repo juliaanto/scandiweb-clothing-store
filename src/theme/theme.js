@@ -9,6 +9,7 @@ const theme = {
     specialDark: '#43464e',
     specialGreen: '#57c273',
     specialGrey: '#e5e5e5',
+    specialDarkGrey: '#393748',
   },
 };
 

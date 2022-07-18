@@ -3,17 +3,23 @@ import styled, { css } from 'styled-components';
 const Block = styled.form`
   width: ${({$styleType}) => $styleType === 'cart-page' ? '50%' : '292px'};
   flex-grow: 1;
+
+  ${({ $isCartOverlay }) =>
+    $isCartOverlay &&
+    css`
+      max-width: 136px;
+  `}
 `;
 
 Block.Brand = styled.h2`
-  font-weight: 600;
-  font-size: 30px;
+  font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '300' : '600'};
+  font-size: ${({$isCartOverlay}) => $isCartOverlay ? '16px' : '30px'};
   margin-bottom: 6px;
 `;
 
 Block.Name = styled.p`
-  font-weight: 400;
-  font-size: 30px;
+  font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '300' : '400'};
+  font-size: ${({$isCartOverlay}) => $isCartOverlay ? '16px' : '30px'};
 
   ${({ $styleType }) =>
     $styleType === 'product-page' &&
@@ -28,21 +34,26 @@ Block.Attribute = styled.fieldset`
 `;
 
 Block.Title = styled.legend`
-  font-weight: 700;
-  font-size: 18px;
-  text-transform: uppercase;
-  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '400' : '700'};
+  font-size: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '18px'};
 
   ${({ $styleType }) =>
     $styleType === 'product-page' &&
     css`
       margin-top: 38px;
   `}
+
+  ${({ $isCartOverlay }) =>
+    !$isCartOverlay &&
+    css`
+      text-transform: uppercase;
+      font-family: 'Roboto Condensed', sans-serif;
+  `}
 `;
 
 Block.Price = styled.p`
-  font-weight: 700;
-  font-size: 24px;
+  font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '500' : '700'};
+  font-size: ${({$isCartOverlay}) => $isCartOverlay ? '16px' : '24px'};
   margin-top: 16px;
   margin-bottom: ${({$styleType}) => $styleType === 'product-page' ? '29px' : '16px'};
 `;

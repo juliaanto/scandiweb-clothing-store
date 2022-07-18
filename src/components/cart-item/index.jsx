@@ -90,16 +90,16 @@ class CartItem extends React.Component {
     const product = this.props.product;
 
     return (
-      <Block>
-        <ProductDetails product={product} $styleType='cart-page' />
+      <Block $isCartOverlay={this.props.$isCartOverlay}>
+        <ProductDetails product={product} $styleType='cart-page' $isCartOverlay={this.props.$isCartOverlay} />
         <Block.QuantityWrapper>
-          <Button $styleType='quantity' $isPlus onClick={this.increaseQuantity} />
-          <Input value={this.state.quantity} />
-          <Button $styleType='quantity' onClick={this.decreaseQuantity} />
+          <Button $styleType='quantity' $isPlus onClick={this.increaseQuantity} $isCartOverlay={this.props.$isCartOverlay} />
+          <Input value={this.state.quantity} $isCartOverlay={this.props.$isCartOverlay} />
+          <Button $styleType='quantity' onClick={this.decreaseQuantity} $isCartOverlay={this.props.$isCartOverlay} />
         </Block.QuantityWrapper>
         <Block.ImageWrapper>
-          <Block.Image src={product.gallery[this.state.currentImageIndex]} alt={product.name} width="200" height="288" />
-          {product.gallery.length > 1 && 
+          <Block.Image src={product.gallery[this.state.currentImageIndex]} alt={product.name} width={this.props.$isCartOverlay ? '121' : '200'} height={this.props.$isCartOverlay ? '190' : '288'} />
+          {(!this.props.$isCartOverlay && product.gallery.length > 1) && 
             <>
               <Button $styleType='arrow' $isPrev onClick={this.decreaseImageIndex}/>
               <Button $styleType='arrow' onClick={this.increaseImageIndex}/>

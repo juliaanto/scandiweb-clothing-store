@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const Block = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: ${(props) => props.$attributeType === 'swatch' ? '8px' : '12px'};
+  gap: ${(props) => props.$attributeType === 'swatch' || props.$isCartOverlay ? '8px' : '12px'};
   padding-top: ${(props) => props.$attributeType === 'swatch' ? '8px' : '5px'};
 `;
 
@@ -20,8 +20,6 @@ Block.Value = styled.div`
             `;
         default:
           return css`
-            min-width: 63px;
-            min-height: 45px;
             border: 1px solid ${({ theme }) => theme.color.basicDark};
 
           `;
@@ -57,14 +55,10 @@ Block.Input = styled.input`
             height: 100%;
           }
 
-          &:checked + label::before {
-            background-color: ${({ theme }) => theme.color.basicDark};
-            z-index: -1;
-          } 
-
           &:checked + label {
             cursor: ${({$styleType}) => $styleType !== 'product-page' ? 'default' : 'pointer'};
             color: ${({ theme }) => theme.color.basicWhite};
+            background-color: ${({ theme }) => theme.color.basicDark};
           } 
           `;
       }
@@ -72,14 +66,16 @@ Block.Input = styled.input`
 `;
 
 Block.Label = styled.label`
+  font-family: 'Source Sans Pro', sans-serif;
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-left: 8px;
-  padding-right: 8px;
+  padding: ${({$isCartOverlay}) => $isCartOverlay ? '2px 4px' : '12px 20px'};
+  font-weight: 400;
+  font-size: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
 `;
 
 export default Block;

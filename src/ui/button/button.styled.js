@@ -100,8 +100,8 @@ const Button = styled.button`
         `;
       case 'quantity':
         return css`
-          width: 45px;
-          height: 45px;
+          width: ${({ $isCartOverlay }) => $isCartOverlay ? '24px' : '45px'};
+          height: ${({ $isCartOverlay }) => $isCartOverlay ? '24px' : '45px'};
           border: 1px solid ${({ theme }) => theme.color.basicDark};
           font-size: 50px;
 
@@ -150,9 +150,16 @@ const Button = styled.button`
           text-transform: uppercase;
           font-weight: 600;
           font-size: 16px;
-          width: 100%;
           padding-top: 16px;
           padding-bottom: 16px;
+          flex-grow: 1;
+
+          ${({$isCartOverlay}) =>
+          !$isCartOverlay &&
+            css`
+              width: 100%;
+            `
+          }
         `;
     }
   }}

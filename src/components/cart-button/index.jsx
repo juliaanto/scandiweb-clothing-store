@@ -19,6 +19,10 @@ class CartButton extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
+  componentDidUpdate() {
+    document.body.style.overflow = this.state.isCartOverlayOpen ? 'hidden' : 'auto';
+  }
+ 
   handleClick() {
     this.setState(prevState => ({
       isCartOverlayOpen: !prevState.isCartOverlayOpen
@@ -36,9 +40,11 @@ class CartButton extends React.Component {
   }
   
   render() {
+
+    
     return (
       <>
-        <Overlay isOpen={this.state.isCartOverlayOpen} handleClose={() => this.setState({isCartOverlayOpen: false})} buttonId="#cart">
+        <Overlay isOpen={this.state.isCartOverlayOpen} handleClose={() => this.setState({isCartOverlayOpen: false})} buttonId="#cart" $isCartOverlay>
           <CartOverlay />
         </Overlay>
         <Button 

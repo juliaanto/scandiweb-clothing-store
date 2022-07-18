@@ -13,6 +13,7 @@ class Input extends React.Component {
         value={this.props.value}
         readOnly
         disabled
+        $isCartOverlay={this.props.$isCartOverlay}
       />
     )
   }
