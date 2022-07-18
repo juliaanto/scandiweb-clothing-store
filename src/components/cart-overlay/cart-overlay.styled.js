@@ -7,6 +7,8 @@ const Block = styled.div`
   flex-direction: column;
   row-gap: 32px;
   width: 325px;
+  overflow: scroll;
+  height: 60vh;
 `;
 
 Block.TitleWrapper = styled.div`

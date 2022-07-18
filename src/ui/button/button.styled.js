@@ -104,6 +104,7 @@ const Button = styled.button`
           height: ${({ $isCartOverlay }) => $isCartOverlay ? '24px' : '45px'};
           border: 1px solid ${({ theme }) => theme.color.basicDark};
           font-size: 50px;
+          position: relative;
 
           ${({$isPlus}) =>
             $isPlus ?

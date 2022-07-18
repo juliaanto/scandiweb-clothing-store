@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 const Block = styled.div`
   position: fixed;
   top: 78px;
-  right: 78px;
+  right: calc(50% - 640px);
   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   background-color: ${({ theme }) => theme.color.basicWhite};
   display: flex;
