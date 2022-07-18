@@ -7,7 +7,7 @@ const Block = styled.form`
   ${({ $isCartOverlay }) =>
     $isCartOverlay &&
     css`
-      max-width: 136px;
+      max-width: 140px;
   `}
 `;
 
@@ -15,6 +15,12 @@ Block.Brand = styled.h2`
   font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '300' : '600'};
   font-size: ${({$isCartOverlay}) => $isCartOverlay ? '16px' : '30px'};
   margin-bottom: 6px;
+
+  ${({$isCartOverlay}) => 
+  $isCartOverlay &&
+  css`
+    margin-top: 4px;
+  `}
 `;
 
 Block.Name = styled.p`
@@ -54,8 +60,14 @@ Block.Title = styled.legend`
 Block.Price = styled.p`
   font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '500' : '700'};
   font-size: ${({$isCartOverlay}) => $isCartOverlay ? '16px' : '24px'};
-  margin-top: 16px;
+  margin-top: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
   margin-bottom: ${({$styleType}) => $styleType === 'product-page' ? '29px' : '16px'};
+
+  ${({ $isCartOverlay }) =>
+    $isCartOverlay &&
+    css`
+      margin-bottom: 11px;
+  `}
 `;
 
 export default Block;

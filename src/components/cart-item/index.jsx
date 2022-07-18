@@ -102,7 +102,7 @@ class CartItem extends React.Component {
           <Input value={this.state.quantity} $isCartOverlay={this.props.$isCartOverlay} />
           <Button $styleType='quantity' onClick={this.decreaseQuantity} $isCartOverlay={this.props.$isCartOverlay} />
         </Block.QuantityWrapper>
-        <Block.ImageWrapper>
+        <Block.ImageWrapper $isCartOverlay={this.props.$isCartOverlay}>
           <Block.Image src={product.gallery[this.state.currentImageIndex]} alt={product.name} width={this.props.$isCartOverlay ? '121' : '200'} height={this.props.$isCartOverlay ? '190' : '288'} />
           {(!this.props.$isCartOverlay && product.gallery.length > 1) && 
             <>

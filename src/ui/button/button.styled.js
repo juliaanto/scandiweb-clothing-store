@@ -113,7 +113,7 @@ const Button = styled.button`
               &::after {
                 position: absolute;
                 content: "";
-                width: 15px;
+                width: ${({ $isCartOverlay }) => $isCartOverlay ? '8px' : '15px'};
                 border-bottom: 1px solid ${({ theme }) => theme.color.basicDark};
                 bottom: center;
                 right: center;
@@ -132,7 +132,7 @@ const Button = styled.button`
               &::before {
                 position: absolute;
                 content: "";
-                width: 15px;
+                width: ${({ $isCartOverlay }) => $isCartOverlay ? '8px' : '15px'};
                 border-bottom: 1px solid ${({ theme }) => theme.color.basicDark};
                 bottom: center;
                 right: center;
@@ -150,7 +150,7 @@ const Button = styled.button`
           color: ${({ theme }) => theme.color.basicWhite};
           text-transform: uppercase;
           font-weight: 600;
-          font-size: 16px;
+          font-size: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
           padding-top: 16px;
           padding-bottom: 16px;
           flex-grow: 1;

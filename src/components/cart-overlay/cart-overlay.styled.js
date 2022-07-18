@@ -2,17 +2,17 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Block = styled.div`
-  padding: 32px 16px;
+  padding: 36px 16px 32px;
   display: flex;
   flex-direction: column;
-  row-gap: 32px;
   width: 325px;
   overflow: scroll;
-  height: 60vh;
+  max-height: 60vh;
 `;
 
 Block.TitleWrapper = styled.div`
   display: flex;
+  margin-bottom: 35px;
 `;
 
 Block.Title = styled.p`
@@ -29,6 +29,8 @@ Block.ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 12px;
+  margin-top: 32px;
+  height: 43px;
 `;
 
 Block.Link = styled(Link)`
@@ -38,6 +40,8 @@ Block.Link = styled(Link)`
   display: block;
   padding: 13px;
   text-align: center;
+  font-size: 14px;
+  font-weight: 600;
 `;
 
 export default Block;

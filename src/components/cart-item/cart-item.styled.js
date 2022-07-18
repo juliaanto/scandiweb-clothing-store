@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 
 const Block = styled.li`
-  padding-top: 20px;
-  padding-bottom: 19px;
   display: flex;
   justify-content: space-between;
 
@@ -10,6 +8,8 @@ const Block = styled.li`
     !$isCartOverlay &&
     css`
       border-bottom: 1px solid ${({ theme }) => theme.color.specialGrey};
+      padding-top: 20px;
+      padding-bottom: 19px;
   `}
 `;
 
@@ -17,13 +17,18 @@ Block.QuantityWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 3px;
-  margin-bottom: 3px;
 `;
 
 Block.ImageWrapper = styled.div`
   position: relative;
-  margin-left: 24px;
+  margin-left: ${({ $isCartOverlay }) => $isCartOverlay ? '8px' : '24px'};
+  height: 190px;
+
+  ${({ $isCartOverlay }) =>
+    $isCartOverlay &&
+    css`
+      height: 190px;
+  `}
 `;
 
 Block.Image = styled.img`
