@@ -1,4 +1,4 @@
-import { addProduct, deleteProductFromCart, updateProductQuantity, updateQuantityInCart } from '../action';
+import { deleteProductFromCart, updateCartList, updateProductQuantity, updateQuantityInCart } from '../action';
 
 const { createReducer } = require('@reduxjs/toolkit')
 
@@ -9,21 +9,20 @@ const initialState = {
 
 const userProcess = createReducer(initialState, (builder) => {
   builder
-    .addCase(addProduct, (state, action) => {
-      const {product} = action.payload;
+    .addCase(updateCartList, (state, action) => {
+      const {productList} = action.payload;
 
-      state.productsInCart.push(product);
+      state.productsInCart = productList;
     })
     .addCase(updateProductQuantity, (state, action) => {
-      const {productId, quantity} = action.payload;
+      const {productIndex, quantity} = action.payload;
 
-      state.productsInCart.find((product) => product.id === productId).quantity = quantity;
+      state.productsInCart[productIndex].quantity = quantity;
     })
     .addCase(deleteProductFromCart, (state, action) => {
-      const {productId} = action.payload;
+      const {productIndex} = action.payload;
 
-      const deletedProductIndex = state.productsInCart.findIndex((product) => product.id === productId);
-      state.productsInCart.splice(deletedProductIndex, 1);
+      state.productsInCart.splice(productIndex, 1);
     })
     .addCase(updateQuantityInCart, (state, action) => {
       const {quantity} = action.payload;

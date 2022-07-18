@@ -55,11 +55,11 @@ export const loadProduct = createAction(
   })
 );
 
-export const addProduct = createAction(
-  ActionType.AddProduct,
-  (product) => ({
+export const updateCartList = createAction(
+  ActionType.UpdateCartList,
+  (productList) => ({
     payload: {
-      product,
+      productList,
     }
   })
 );
@@ -73,18 +73,18 @@ export const redirectToRoute = createAction(
 
 export const updateProductQuantity = createAction(
   ActionType.UpdateProductQuantity,
-  (productId, quantity) => ({
+  (productIndex, quantity) => ({
     payload: {
-      productId, quantity,
+      productIndex, quantity,
     }
   })
 );
 
 export const deleteProductFromCart = createAction(
   ActionType.DeleteProductFromCart,
-  (productId) => ({
+  (productIndex) => ({
     payload: {
-      productId,
+      productIndex,
     }
   })
 );

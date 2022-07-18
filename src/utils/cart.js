@@ -9,3 +9,12 @@ export const getProductQuantity = () => {
   
   return quantity;
 }
+
+export const getProduct = (productsInCart, product) => {
+  const productsWithSameId = productsInCart.filter((item) => item.id === product.id);
+  const sameProduct = productsWithSameId.find((item) => (
+    JSON.stringify(item?.checkedAttributes) === JSON.stringify(product.checkedAttributes)
+  ))
+  
+  return sameProduct;
+}

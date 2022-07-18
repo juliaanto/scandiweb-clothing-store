@@ -1,4 +1,5 @@
-import { addProduct, updateQuantityInCart } from '../../store/action';
+import { getProduct, getProductQuantity } from '../../utils/cart';
+import { updateCartList, updateQuantityInCart } from '../../store/action';
 
 import Block from './product.styled';
 import { Button } from '../../ui';
@@ -8,19 +9,19 @@ import { ProductDetails } from '../../components';
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchProductAction } from '../../store/api-actions';
-import { getProductQuantity } from '../../utils/cart';
 
 const mapStateToProps = (state) => {
   const { product } = state[NameSpace.ShopData];
-  return { product }
+  const { productsInCart } = state[NameSpace.UserProcess];
+  return { product, productsInCart }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   onProductChange(productId) {
     dispatch(fetchProductAction(productId));
   },
-  onProductAdd(product) {
-    dispatch(addProduct(product));
+  onProductAdd(productList) {
+    dispatch(updateCartList(productList));
     dispatch(updateQuantityInCart(getProductQuantity()));
   },
 });
@@ -43,6 +44,7 @@ class Product extends React.Component {
 
   handleAddToCartClick(product) {
     const addedProduct = {...product};
+
     const form = document.querySelector("#product-form");
     const data = new FormData(form);
 
@@ -52,8 +54,23 @@ class Product extends React.Component {
     };
 
     addedProduct['checkedAttributes'] = checkedAttributes;
-    addedProduct['quantity'] = 1;
-    this.props.onProductAdd(addedProduct);
+
+    const sameProduct = getProduct(this.props.productsInCart, addedProduct)
+
+    const sameProductIndex = this.props.productsInCart.indexOf(sameProduct);
+
+    const updatedProductList = [...this.props.productsInCart]
+
+    if (sameProduct) {
+      const updatedSameProduct = {...sameProduct};
+      updatedSameProduct['quantity'] += 1;
+      updatedProductList.splice(sameProductIndex, 1, updatedSameProduct);
+    } else {
+      addedProduct['quantity'] = 1;
+      updatedProductList.push(addedProduct)
+    }
+    
+    this.props.onProductAdd(updatedProductList);
   }
 
   componentDidMount() {

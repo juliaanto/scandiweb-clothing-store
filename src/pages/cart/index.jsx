@@ -5,6 +5,8 @@ import React from 'react';
 
 class Cart extends React.Component {
   render() {
+    document.title = 'Cart';
+    
     return (
       <Page>
         <Block.Title>Cart</Block.Title>

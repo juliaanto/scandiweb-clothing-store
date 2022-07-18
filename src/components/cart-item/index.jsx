@@ -1,5 +1,6 @@
 import { Button, Input } from '../../ui';
 import { deleteProductFromCart, updateProductQuantity, updateQuantityInCart } from '../../store/action';
+import { getProduct, getProductQuantity } from '../../utils/cart';
 
 import Block from './cart-item.styled';
 import { MAX_PRODUCT_QUANTITY } from '../../const';
@@ -7,15 +8,19 @@ import { NameSpace } from '../../store/root-reducer';
 import { ProductDetails } from '..';
 import React from 'react';
 import { connect } from 'react-redux';
-import { getProductQuantity } from '../../utils/cart';
+
+const mapStateToProps = (state) => {
+  const { productsInCart } = state[NameSpace.UserProcess];
+  return { productsInCart }
+}
 
 const mapDispatchToProps = (dispatch) => ({
-  onQuantityUpdate(productId, quantity, quantityInCart) {
-    dispatch(updateProductQuantity(productId, quantity));
+  onQuantityUpdate(productIndex, quantity, quantityInCart) {
+    dispatch(updateProductQuantity(productIndex, quantity));
     dispatch(updateQuantityInCart(quantityInCart));
   },
-  onProductDelete(productId, quantityInCart) {
-    dispatch(deleteProductFromCart(productId));
+  onProductDelete(productIndex, quantityInCart) {
+    dispatch(deleteProductFromCart(productIndex));
     dispatch(updateQuantityInCart(quantityInCart));
   }
 });
@@ -25,7 +30,7 @@ class CartItem extends React.Component {
     super(props);
     this.state = {
       currentImageIndex: 0,
-      quantity: JSON.parse(localStorage.getItem('state'))[NameSpace.UserProcess].productsInCart.find((item) => item.id === this.props.product.id).quantity,
+      quantity: getProduct(JSON.parse(localStorage.getItem('state'))[NameSpace.UserProcess].productsInCart, this.props.product).quantity,
     };
     this.increaseImageIndex = this.increaseImageIndex.bind(this);
     this.decreaseImageIndex = this.decreaseImageIndex.bind(this);
@@ -63,7 +68,7 @@ class CartItem extends React.Component {
 
     if(newValue < 1) {
       const newValueItemsInCart = getProductQuantity() - 1;
-      this.props.onProductDelete(this.props.product.id, newValueItemsInCart)
+      this.props.onProductDelete(this.props.productsInCart.indexOf(getProduct(this.props.productsInCart, this.props.product)), newValueItemsInCart)
     } else {
       this.setState({quantity: newValue});
       this.updateProductQuantity(newValue);
@@ -83,7 +88,7 @@ class CartItem extends React.Component {
 
   updateProductQuantity(quantity) {
     const newValueItemsInCart = getProductQuantity() + quantity - this.state.quantity;
-    this.props.onQuantityUpdate(this.props.product.id, quantity, newValueItemsInCart)
+    this.props.onQuantityUpdate(this.props.productsInCart.indexOf(getProduct(this.props.productsInCart, this.props.product)), quantity, newValueItemsInCart)
   }
   
   render() {
@@ -111,4 +116,4 @@ class CartItem extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(CartItem);
+export default connect(mapStateToProps, mapDispatchToProps)(CartItem);
