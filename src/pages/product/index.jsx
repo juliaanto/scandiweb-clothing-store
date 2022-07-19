@@ -1,4 +1,4 @@
-import { getProduct, getProductQuantity } from '../../utils/cart';
+import { getProductQuantity, updateProductList } from '../../utils/cart';
 import { updateCartList, updateQuantityInCart } from '../../store/action';
 
 import Block from './product.styled';
@@ -42,8 +42,8 @@ class Product extends React.Component {
     return {__html: this.props.product?.description};
   }
 
-  handleAddToCartClick(product) {
-    const addedProduct = {...product};
+  handleAddToCartClick() {
+    const addedProduct = {...this.props.product};
 
     const form = document.querySelector("#product-form");
     const data = new FormData(form);
@@ -55,20 +55,7 @@ class Product extends React.Component {
 
     addedProduct['checkedAttributes'] = checkedAttributes;
 
-    const sameProduct = getProduct(this.props.productsInCart, addedProduct)
-
-    const sameProductIndex = this.props.productsInCart.indexOf(sameProduct);
-
-    const updatedProductList = [...this.props.productsInCart]
-
-    if (sameProduct) {
-      const updatedSameProduct = {...sameProduct};
-      updatedSameProduct['quantity'] += 1;
-      updatedProductList.splice(sameProductIndex, 1, updatedSameProduct);
-    } else {
-      addedProduct['quantity'] = 1;
-      updatedProductList.push(addedProduct)
-    }
+    const updatedProductList = updateProductList(this.props.productsInCart, addedProduct);
     
     this.props.onProductAdd(updatedProductList);
   }
@@ -100,7 +87,7 @@ class Product extends React.Component {
         <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
         <Block.Сharacteristics>
           <ProductDetails product={this.props.product} $styleType='product-page' />
-          <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick(this.props.product)}>Add to cart</Button>
+          <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick()}>Add to cart</Button>
           <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
         </Block.Сharacteristics>
         </Block>

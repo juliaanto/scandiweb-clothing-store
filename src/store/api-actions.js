@@ -26,7 +26,9 @@ export const fetchProductsAction = (currentCategory) =>
                 }
                 amount
               }
-      
+              attributes {
+                id
+              }
             }
           }
         }

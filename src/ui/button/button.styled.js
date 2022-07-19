@@ -151,8 +151,8 @@ const Button = styled.button`
           text-transform: uppercase;
           font-weight: 600;
           font-size: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
-          padding-top: 16px;
-          padding-bottom: 16px;
+          padding-top: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
+          padding-bottom: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
           flex-grow: 1;
 
           ${({$isCartOverlay}) =>
