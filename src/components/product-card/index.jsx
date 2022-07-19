@@ -7,6 +7,7 @@ import { Button } from '../../ui';
 import { Link } from 'react-router-dom';
 import { NameSpace } from '../../store/root-reducer';
 import React from 'react';
+import browserHistory from '../../browser-history';
 import { connect } from 'react-redux';
 import { getPrice } from '../../utils/price';
 
@@ -25,9 +26,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 class ProductCard extends React.Component {
   handleAddToCartClick() {
-    const addedProduct = {...this.props.product};
-    const updatedProductList = updateProductList(this.props.productsInCart, addedProduct);
-    this.props.onProductAdd(updatedProductList);
+    if (this.props.product.attributes.length > 0) {
+      browserHistory.push(AppLink.ProductById(this.props.product.id));
+      window.location.reload();
+    } else {
+      const addedProduct = {...this.props.product};
+      const updatedProductList = updateProductList(this.props.productsInCart, addedProduct);
+      this.props.onProductAdd(updatedProductList);
+    }
   }
   
   render() {
@@ -42,13 +48,8 @@ class ProductCard extends React.Component {
             <Block.Title $isInStock={product.inStock}>{product.brand} {product.name}</Block.Title>
             <Block.Price $isInStock={product.inStock}>{price?.currency.symbol}{price?.amount}</Block.Price>
           </Block.Wrapper>
-          {this.props.product.attributes.length > 0 &&
-            <Button $styleType="add-to-cart" />
-          }
         </Link>
-        {this.props.product.attributes.length <= 0 &&
-          <Button $styleType="add-to-cart" onClick={() => this.handleAddToCartClick()}/>
-        }
+        <Button $styleType="add-to-cart" onClick={() => this.handleAddToCartClick()} id={`add-to-cart-${product.id}`}/>
       </Block>
     )
   }

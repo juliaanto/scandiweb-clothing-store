@@ -96,10 +96,10 @@ class CartItem extends React.Component {
 
     return (
       <Block $isCartOverlay={this.props.$isCartOverlay}>
-        <ProductDetails product={product} $styleType='cart-page' $isCartOverlay={this.props.$isCartOverlay} />
+        <ProductDetails product={product} $styleType='cart-page' $isCartOverlay={this.props.$isCartOverlay} $productIndex={this.props.productsInCart.indexOf(product)} />
         <Block.QuantityWrapper>
           <Button $styleType='quantity' $isPlus onClick={this.increaseQuantity} $isCartOverlay={this.props.$isCartOverlay} />
-          <Input value={this.state.quantity} $isCartOverlay={this.props.$isCartOverlay} />
+          <Input value={this.state.quantity} $isCartOverlay={this.props.$isCartOverlay} id={`quantity-input-${product.id}-${this.props.$isCartOverlay}`}/>
           <Button $styleType='quantity' onClick={this.decreaseQuantity} $isCartOverlay={this.props.$isCartOverlay} />
         </Block.QuantityWrapper>
         <Block.ImageWrapper $isCartOverlay={this.props.$isCartOverlay}>

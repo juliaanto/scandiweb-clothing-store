@@ -6,7 +6,7 @@ class Input extends React.Component {
     return (
       <Block 
         type='number' 
-        id='quantity' 
+        id={this.props.id}
         name='quantity' 
         min='1' 
         max='99'

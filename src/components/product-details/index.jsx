@@ -15,7 +15,7 @@ class ProductDetails extends React.Component {
     const price = getPrice(this.props.product?.prices, this.props.currentCurrency);
     
     return (
-      <Block id="product-form" $styleType={this.props.$styleType} $isCartOverlay={this.props.$isCartOverlay}>
+      <Block id={`product-${this.props.product.id}-${this.props.$isCartOverlay}`} $styleType={this.props.$styleType} $isCartOverlay={this.props.$isCartOverlay}>
         <Block.Brand $isCartOverlay={this.props.$isCartOverlay}>{this.props.product?.brand}</Block.Brand>
         <Block.Name 
           $styleType={this.props.$styleType} 
@@ -41,6 +41,7 @@ class ProductDetails extends React.Component {
               checkedAttributes={this.props.product?.checkedAttributes} 
               $styleType={this.props.$styleType}
               $isCartOverlay={this.props.$isCartOverlay}
+              $productIndex={this.props.$productIndex}
             />
           </Block.Attribute>
         ))}

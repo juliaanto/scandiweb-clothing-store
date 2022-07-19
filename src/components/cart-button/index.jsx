@@ -49,6 +49,7 @@ class CartButton extends React.Component {
           $styleType='cart' 
           productQuantity={this.props.quantityInCart}
           onClick={this.handleClick}
+          id='cart'
         />
       </>
     )

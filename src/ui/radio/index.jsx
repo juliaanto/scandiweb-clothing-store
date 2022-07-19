@@ -14,8 +14,8 @@ class Radio extends React.Component {
             $isCartOverlay={this.props.$isCartOverlay}
           >
             <Block.Input 
-              hidden type="radio" 
-              id={attribute.name + item.displayValue} 
+              type="radio" 
+              id={this.props.$productIndex + attribute.name + item.displayValue + `${this.props.$isCartOverlay ? 'cartOverlay' : ''}`}
               name={attribute.name} 
               value={item.displayValue}
               $attributeType={attribute.type}
@@ -24,7 +24,7 @@ class Radio extends React.Component {
               $styleType={this.props.$styleType}
             />
             <Block.Label 
-              htmlFor={attribute.name + item.displayValue}
+              htmlFor={this.props.$productIndex + attribute.name + item.displayValue + `${this.props.$isCartOverlay ? 'cartOverlay' : ''}`}
               $isCartOverlay={this.props.$isCartOverlay}
               $attributeType={attribute.type}
             >

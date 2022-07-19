@@ -9,7 +9,7 @@ class Button extends React.Component {
         $styleType={this.props.$styleType} 
         $isCurrencyOpen={this.props.$isCurrencyOpen} 
         onClick={this.props.onClick}
-        id={this.props.$styleType}
+        id={this.props.id}
         type='button'
         disabled={this.props.disabled}
         $isPrev={this.props.$isPrev}

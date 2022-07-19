@@ -27,6 +27,8 @@ Block.Value = styled.div`
 `;
 
 Block.Input = styled.input`
+  display: none;
+  
   ${(props) => {
       switch (props.$attributeType) {
         case 'swatch':

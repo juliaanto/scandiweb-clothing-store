@@ -94,8 +94,6 @@ const Button = styled.button`
             transform: translate(${({ $isPrev }) => $isPrev ? '-30%' : '-75%'}, -50%) rotate(${({ $isPrev }) => $isPrev ? '135deg' : '315deg'});
             border-bottom: 1.5px solid ${({ theme }) => theme.color.basicWhite};
             border-right: 1.5px solid ${({ theme }) => theme.color.basicWhite};
-            bottom: center;
-            right: center;
           }
         `;
       case 'quantity':
@@ -115,8 +113,6 @@ const Button = styled.button`
                 content: "";
                 width: ${({ $isCartOverlay }) => $isCartOverlay ? '8px' : '15px'};
                 border-bottom: 1px solid ${({ theme }) => theme.color.basicDark};
-                bottom: center;
-                right: center;
               }
 
               &::before {
@@ -134,8 +130,6 @@ const Button = styled.button`
                 content: "";
                 width: ${({ $isCartOverlay }) => $isCartOverlay ? '8px' : '15px'};
                 border-bottom: 1px solid ${({ theme }) => theme.color.basicDark};
-                bottom: center;
-                right: center;
               }
 
               &::before {

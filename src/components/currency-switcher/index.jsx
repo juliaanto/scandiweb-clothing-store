@@ -36,6 +36,7 @@ class CurrencySwitcher extends React.Component {
           $isCurrencyOpen={this.state.isCurrencySelectorOpen} 
           $currentCurrency={this.props.currentCurrency?.symbol}
           onClick={this.handleClick}
+          id='currency'
         />
       </>
     )

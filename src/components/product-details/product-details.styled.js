@@ -39,7 +39,7 @@ Block.Attribute = styled.fieldset`
   margin-bottom: ${({$styleType}) => $styleType === 'product-page' ? '23px' : '15px'}
 `;
 
-Block.Title = styled.legend`
+Block.Title = styled.h3`
   font-weight: ${({$isCartOverlay}) => $isCartOverlay ? '400' : '700'};
   font-size: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '18px'};
 
