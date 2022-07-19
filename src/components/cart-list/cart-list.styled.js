@@ -15,6 +15,14 @@ const Block = styled.ul`
 `;
 
 Block.Text = styled.p`
+  text-align: center;
+  
+  ${({ $isCartOverlay }) =>
+    !$isCartOverlay &&
+    css`
+      font-weight: 400;
+      font-size: 24px;
+    `}
 `;
 
 export default Block;

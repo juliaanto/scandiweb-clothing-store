@@ -22,7 +22,7 @@ class CartList extends React.Component {
         ))}
       </Block>
       :
-      <Block.Text>{Message.EmptyCart}</Block.Text>
+      <Block.Text $isCartOverlay={this.props.$isCartOverlay}>{Message.EmptyCart}</Block.Text>
     )
   }
 }

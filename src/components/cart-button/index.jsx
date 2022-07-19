@@ -43,7 +43,7 @@ class CartButton extends React.Component {
     return (
       <>
         <Overlay isOpen={this.state.isCartOverlayOpen} handleClose={() => this.setState({isCartOverlayOpen: false})} buttonId="#cart" $isCartOverlay>
-          <CartOverlay />
+          <CartOverlay handleClose={() => this.setState({isCartOverlayOpen: false})} />
         </Overlay>
         <Button 
           $styleType='cart' 

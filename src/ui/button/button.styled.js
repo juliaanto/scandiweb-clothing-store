@@ -23,7 +23,7 @@ const Button = styled.button`
             transform: rotate(${({ $isCurrencyOpen }) => $isCurrencyOpen ? '225deg' : '45deg'}) ;
             border-bottom: 1px solid black;
             border-right: 1px solid black;
-            bottom: 8px;
+            bottom: ${({ $isCurrencyOpen }) => $isCurrencyOpen ? '5px' : '8px'};
             right: 3px;
           }
         `;
@@ -150,9 +150,9 @@ const Button = styled.button`
           color: ${({ theme }) => theme.color.basicWhite};
           text-transform: uppercase;
           font-weight: 600;
-          font-size: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
-          padding-top: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
-          padding-bottom: ${({$isCartOverlay}) => $isCartOverlay ? '14px' : '16px'};
+          font-size: ${({$isCartOverlay, $isCartPage}) => $isCartOverlay | $isCartPage ? '14px' : '16px'};
+          padding-top: ${({$isCartOverlay, $isCartPage}) => $isCartOverlay | $isCartPage ? '14px' : '16px'};
+          padding-bottom: ${({$isCartOverlay, $isCartPage}) => $isCartOverlay | $isCartPage ? '14px' : '16px'};
           flex-grow: 1;
 
           ${({$isCartOverlay}) =>

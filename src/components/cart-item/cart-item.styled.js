@@ -10,6 +10,7 @@ const Block = styled.li`
       border-bottom: 1px solid ${({ theme }) => theme.color.specialGrey};
       padding-top: 20px;
       padding-bottom: 19px;
+      min-height: 328px;
   `}
 `;
 
@@ -22,7 +23,7 @@ Block.QuantityWrapper = styled.div`
 Block.ImageWrapper = styled.div`
   position: relative;
   margin-left: ${({ $isCartOverlay }) => $isCartOverlay ? '8px' : '24px'};
-  height: 190px;
+  height: ${({ $isCartOverlay }) => $isCartOverlay ? '190px' : '288px'};
 
   ${({ $isCartOverlay }) =>
     $isCartOverlay &&

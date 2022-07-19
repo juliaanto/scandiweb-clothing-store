@@ -15,13 +15,8 @@ Block.TitleWrapper = styled.div`
   margin-bottom: 35px;
 `;
 
-Block.Title = styled.p`
-  font-weight: 700;
-  font-size: 16px;
-`;
-
 Block.Text = styled.p`
-  font-weight: 500;
+  font-weight: ${({$weight}) => $weight};
   font-size: 16px;
 `;
 
@@ -42,6 +37,12 @@ Block.Link = styled(Link)`
   text-align: center;
   font-size: 14px;
   font-weight: 600;
+`;
+
+Block.TotalPriceWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32px;
 `;
 
 export default Block;

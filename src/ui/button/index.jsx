@@ -16,6 +16,7 @@ class Button extends React.Component {
         $isPlus={this.props.$isPlus}
         $quantity={this.props.productQuantity}
         $isCartOverlay={this.props.$isCartOverlay}
+        $isCartPage={this.props.$isCartPage}
       >
         {this.props.$styleType === 'currency' && this.props.$currentCurrency}
         {this.props.$styleType === 'cart' && <IconCart />}
