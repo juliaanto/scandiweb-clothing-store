@@ -34,8 +34,8 @@ class Cart extends React.Component {
           <Block.Text $weight={700}>{this.props.currentCurrency.symbol}{totalPrice}</Block.Text>
         </Block.Total>
         <Block.ButtonWrapper>
-            <Button $isCartPage disabled={!this.props.quantityInCart > 0}>Order</Button>
-          </Block.ButtonWrapper>
+          <Button $isCartPage disabled={!this.props.quantityInCart > 0}>Order</Button>
+        </Block.ButtonWrapper>
       </Page>
     )
   }

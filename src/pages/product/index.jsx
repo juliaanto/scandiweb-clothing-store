@@ -45,7 +45,7 @@ class Product extends React.Component {
   handleAddToCartClick() {
     const addedProduct = {...this.props.product};
 
-    const form = document.querySelector("#product-form");
+    const form = document.querySelector(`#product-${this.props.product.id}-${this.props.$isCartOverlay}`);
     const data = new FormData(form);
 
     let checkedAttributes = {};
