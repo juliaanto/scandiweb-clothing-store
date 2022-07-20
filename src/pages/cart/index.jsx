@@ -27,11 +27,11 @@ class Cart extends React.Component {
         <CartList />
         <Block.Total>
           <Block.Text $weight={400}>Tax 21%:</Block.Text>
-          <Block.Text $weight={700}>{this.props.currentCurrency.symbol}{tax}</Block.Text>
+          <Block.Text $weight={700}>{this.props.currentCurrency?.symbol}{tax}</Block.Text>
           <Block.Text $weight={400}>Quantity:</Block.Text>
           <Block.Text $weight={700}>{this.props.quantityInCart}</Block.Text>
           <Block.Text $weight={500}>Total:</Block.Text>
-          <Block.Text $weight={700}>{this.props.currentCurrency.symbol}{totalPrice}</Block.Text>
+          <Block.Text $weight={700}>{this.props.currentCurrency?.symbol}{totalPrice}</Block.Text>
         </Block.Total>
         <Block.ButtonWrapper>
           <Button $isCartPage disabled={!this.props.quantityInCart > 0}>Order</Button>
