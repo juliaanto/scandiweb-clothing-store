@@ -26,11 +26,16 @@ Block.Сharacteristics = styled.div`
   width: 292px;
 `;
 
-Block.Description = styled.p`
+Block.Description = styled.div`
   margin-top: 39px;
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
-  line-height: 25.59px;
+  line-height: 1.59;
+
+  & * {
+    font-family: inherit;
+    line-height: inherit;
+  }
 `;
 
 export default Block;

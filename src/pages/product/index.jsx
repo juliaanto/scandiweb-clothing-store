@@ -29,7 +29,9 @@ const mapDispatchToProps = (dispatch) => ({
 class Product extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {currentImage: null};
+    this.state = {
+      currentImage: null,
+    };
   }
   
   getProductId() {
@@ -66,30 +68,35 @@ class Product extends React.Component {
 
   componentDidUpdate() {
     document.title = this.props.product?.brand + ' ' + this.props.product?.name;
+    this.props.onProductChange(this.getProductId());
   }
-  
+
+  componentWillUnmount() {
+    this.props.onProductChange(null);
+  }
+
   render() {
     return (
       <Page>
         <Block>
-        <Block.Preview>
-          {this.props.product?.gallery?.map((image, index) => (
-            <Block.PreviewImage
-              key={index} 
-              src={image} 
-              width={80} 
-              height={80} 
-              alt={this.props.product?.name}
-              onClick={() => this.setState({currentImage: image})}
-            />
-          ))}
-        </Block.Preview>
-        <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
-        <Block.Сharacteristics>
-          <ProductDetails product={this.props.product} $styleType='product-page' $productIndex={this.props.productsInCart.indexOf(this.props.product)} />
-          <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick()}>Add to cart</Button>
-          <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
-        </Block.Сharacteristics>
+          <Block.Preview>
+            {this.props.product?.gallery?.map((image, index) => (
+              <Block.PreviewImage
+                key={index} 
+                src={image} 
+                width={80} 
+                height={80} 
+                alt={this.props.product?.name}
+                onClick={() => this.setState({currentImage: image})}
+              />
+            ))}
+          </Block.Preview>
+          <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
+          <Block.Сharacteristics>
+            <ProductDetails product={this.props.product} $styleType='product-page' $productIndex={this.props.productsInCart.indexOf(this.props.product)} />
+            <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick()}>Add to cart</Button>
+            <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
+          </Block.Сharacteristics>
         </Block>
       </Page>
     )
