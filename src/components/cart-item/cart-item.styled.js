@@ -18,6 +18,7 @@ Block.QuantityWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: ${({ $isCartOverlay }) => $isCartOverlay ? '24px' : '45px'};
 `;
 
 Block.ImageWrapper = styled.div`
