@@ -1,4 +1,4 @@
-import { getProductQuantity, updateProductList } from '../../utils/cart';
+import { addProduct, getProductQuantity } from '../../utils/cart';
 import { updateCartList, updateQuantityInCart } from '../../store/action';
 
 import Block from './product.styled';
@@ -57,7 +57,7 @@ class Product extends React.Component {
 
     addedProduct['checkedAttributes'] = checkedAttributes;
 
-    const updatedProductList = updateProductList(this.props.productsInCart, addedProduct);
+    const updatedProductList = addProduct(this.props.productsInCart, addedProduct);
     
     this.props.onProductAdd(updatedProductList);
   }

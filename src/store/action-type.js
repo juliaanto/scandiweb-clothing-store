@@ -8,6 +8,5 @@ export const ActionType = {
   ChangeCurrentCurrency: 'data/changeCurrentCurrency',
   RedirectToRoute: 'user/redirectToRoute',
   UpdateProductQuantity: 'user/updateProductQuantity',
-  DeleteProductFromCart: 'user/deleteProductFromCart',
   UpdateQuantityInCart: 'user/updateQuantityInCart',
 }

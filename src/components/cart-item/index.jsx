@@ -1,6 +1,6 @@
 import { Button, Input } from '../../ui';
-import { deleteProductFromCart, updateProductQuantity, updateQuantityInCart } from '../../store/action';
-import { getProduct, getProductQuantity } from '../../utils/cart';
+import { getProduct, getProductQuantity, removeProduct } from '../../utils/cart';
+import { updateCartList, updateProductQuantity, updateQuantityInCart } from '../../store/action';
 
 import Block from './cart-item.styled';
 import { MAX_PRODUCT_QUANTITY } from '../../const';
@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateProductQuantity(productIndex, quantity));
     dispatch(updateQuantityInCart(quantityInCart));
   },
-  onProductDelete(productIndex, quantityInCart) {
-    dispatch(deleteProductFromCart(productIndex));
+  onProductRemove(productList, quantityInCart) {
+    dispatch(updateCartList(productList));
     dispatch(updateQuantityInCart(quantityInCart));
   }
 });
@@ -68,7 +68,9 @@ class CartItem extends React.Component {
 
     if(newValue < 1) {
       const newValueItemsInCart = getProductQuantity() - 1;
-      this.props.onProductDelete(this.props.productsInCart.indexOf(getProduct(this.props.productsInCart, this.props.product)), newValueItemsInCart)
+      const removedProduct = {...this.props.product};
+      const updatedProductList = removeProduct(this.props.productsInCart, removedProduct);
+      this.props.onProductRemove(updatedProductList, newValueItemsInCart)
     } else {
       this.setState({quantity: newValue});
       this.updateProductQuantity(newValue);

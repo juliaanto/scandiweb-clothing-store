@@ -80,15 +80,6 @@ export const updateProductQuantity = createAction(
   })
 );
 
-export const deleteProductFromCart = createAction(
-  ActionType.DeleteProductFromCart,
-  (productIndex) => ({
-    payload: {
-      productIndex,
-    }
-  })
-);
-
 export const updateQuantityInCart = createAction(
   ActionType.UpdateQuantityInCart,
   (quantity) => ({

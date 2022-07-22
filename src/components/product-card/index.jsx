@@ -1,4 +1,4 @@
-import { getProductQuantity, updateProductList } from '../../utils/cart';
+import { addProduct, getProductQuantity } from '../../utils/cart';
 import { updateCartList, updateQuantityInCart } from '../../store/action';
 
 import {AppLink} from '../../const'
@@ -31,7 +31,7 @@ class ProductCard extends React.Component {
       window.location.reload();
     } else {
       const addedProduct = {...this.props.product};
-      const updatedProductList = updateProductList(this.props.productsInCart, addedProduct);
+      const updatedProductList = addProduct(this.props.productsInCart, addedProduct);
       this.props.onProductAdd(updatedProductList);
     }
   }

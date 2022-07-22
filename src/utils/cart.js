@@ -25,7 +25,7 @@ export const getProduct = (productsInCart, product) => {
   return sameProduct;
 }
 
-export const updateProductList = (productsInCart, addedProduct) => {
+export const addProduct = (productsInCart, addedProduct) => {
   const sameProduct = getProduct(productsInCart, addedProduct)
 
   const sameProductIndex = productsInCart.indexOf(sameProduct);
@@ -41,5 +41,13 @@ export const updateProductList = (productsInCart, addedProduct) => {
     updatedProductList.push(addedProduct)
   }
   
+  return updatedProductList;
+}
+
+export const removeProduct = (productsInCart, removedProduct) => {
+  const updatedProductList = [...productsInCart]
+  const removedProductIndex = productsInCart.indexOf(getProduct(productsInCart, removedProduct));
+  updatedProductList.splice(removedProductIndex, 1);
+
   return updatedProductList;
 }

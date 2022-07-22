@@ -1,4 +1,4 @@
-import { deleteProductFromCart, updateCartList, updateProductQuantity, updateQuantityInCart } from '../action';
+import { updateCartList, updateProductQuantity, updateQuantityInCart } from '../action';
 
 const { createReducer } = require('@reduxjs/toolkit')
 
@@ -18,11 +18,6 @@ const userProcess = createReducer(initialState, (builder) => {
       const {productIndex, quantity} = action.payload;
 
       state.productsInCart[productIndex].quantity = quantity;
-    })
-    .addCase(deleteProductFromCart, (state, action) => {
-      const {productIndex} = action.payload;
-
-      state.productsInCart.splice(productIndex, 1);
     })
     .addCase(updateQuantityInCart, (state, action) => {
       const {quantity} = action.payload;
