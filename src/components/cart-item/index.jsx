@@ -70,7 +70,8 @@ class CartItem extends React.Component {
       const newValueItemsInCart = getProductQuantity() - 1;
       const removedProduct = {...this.props.product};
       const updatedProductList = removeProduct(this.props.productsInCart, removedProduct);
-      this.props.onProductRemove(updatedProductList, newValueItemsInCart)
+      this.props.onProductRemove(updatedProductList, newValueItemsInCart);
+      window.location.reload();
     } else {
       this.setState({quantity: newValue});
       this.updateProductQuantity(newValue);
