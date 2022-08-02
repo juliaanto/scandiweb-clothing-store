@@ -91,7 +91,14 @@ class Product extends React.Component {
               />
             ))}
           </Block.Preview>
-          <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
+          <Block.ImageWrapper $isInStock={this.props.product?.inStock}>
+            <Block.Image 
+              src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} 
+              width={610} 
+              alt={this.props.product?.name}
+            />
+          </Block.ImageWrapper>
+
           <Block.Сharacteristics>
             <ProductDetails product={this.props.product} $styleType='product-page' $productIndex={this.props.productsInCart.indexOf(this.props.product)} />
             <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick()}>Add to cart</Button>

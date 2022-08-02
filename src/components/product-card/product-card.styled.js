@@ -63,7 +63,6 @@ Block.Wrapper = styled.div`
         opacity: 0.5;
         top: 0;
       }
-    }
   `}
 `;
 
