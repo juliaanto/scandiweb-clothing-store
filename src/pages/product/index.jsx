@@ -40,8 +40,13 @@ class Product extends React.Component {
     return id;
   }
 
-  getDescription() {
-    return {__html: this.props.product?.description};
+  setDescription() {
+    const descriptionElement = document.querySelector("#description");
+    if (descriptionElement.childNodes.length > 0) {
+      return;
+    }
+    const description = new DOMParser().parseFromString(this.props.product?.description, 'text/html').body.firstChild;
+    descriptionElement.appendChild(description);
   }
 
   handleAddToCartClick() {
@@ -69,6 +74,7 @@ class Product extends React.Component {
   componentDidUpdate() {
     document.title = this.props.product?.brand + ' ' + this.props.product?.name;
     this.props.onProductChange(this.getProductId());
+    this.setDescription();
   }
 
   componentWillUnmount() {
@@ -98,11 +104,10 @@ class Product extends React.Component {
               alt={this.props.product?.name}
             />
           </Block.ImageWrapper>
-
           <Block.Сharacteristics>
             <ProductDetails product={this.props.product} $styleType='product-page' $productIndex={this.props.productsInCart.indexOf(this.props.product)} />
             <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick()}>Add to cart</Button>
-            <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
+            <Block.Description id="description" />
           </Block.Сharacteristics>
         </Block>
       </Page>
