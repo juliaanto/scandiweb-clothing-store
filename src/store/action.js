@@ -55,6 +55,10 @@ export const loadProduct = createAction(
   })
 );
 
+export const resetProduct = createAction(
+  ActionType.ResetProduct
+);
+
 export const updateCartList = createAction(
   ActionType.UpdateCartList,
   (productList) => ({

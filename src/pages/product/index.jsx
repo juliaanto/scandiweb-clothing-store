@@ -1,5 +1,5 @@
 import { addProduct, getProductQuantity } from '../../utils/cart';
-import { updateCartList, updateQuantityInCart } from '../../store/action';
+import { resetProduct, updateCartList, updateQuantityInCart } from '../../store/action';
 
 import Block from './product.styled';
 import { Button } from '../../ui';
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateCartList(productList));
     dispatch(updateQuantityInCart(getProductQuantity()));
   },
+  onComponentUnmount() {
+    dispatch(resetProduct());
+  }
 });
 
 class Product extends React.Component {
@@ -78,7 +81,7 @@ class Product extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.onProductChange(null);
+    this.props.onComponentUnmount();
   }
 
   render() {
