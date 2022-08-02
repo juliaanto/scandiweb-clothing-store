@@ -1,6 +1,7 @@
 import { changeCurrentCategory, changeCurrentCurrency, loadCategories, loadCurrencies, loadProduct, loadProducts, resetProduct } from '../action';
 
 import { createReducer } from '@reduxjs/toolkit'
+import { getCategory } from '../../utils/category';
 import { getCurrency } from '../../utils/currency';
 
 const initialState = {
@@ -23,7 +24,7 @@ const shopData = createReducer(initialState, (builder) => {
       const {categories} = action.payload;
 
       state.categories = categories;
-      state.currentCategory = categories[0].name;
+      state.currentCategory = getCategory(categories);
     })
     .addCase(loadCurrencies, (state, action) => {
       const {currencies} = action.payload;
