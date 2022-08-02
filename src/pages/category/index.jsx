@@ -4,13 +4,24 @@ import Page from '../../layout/page';
 import { ProductCard } from '../../components';
 import React from 'react';
 import { connect } from 'react-redux';
+import { fetchProductsAction } from '../../store/api-actions';
 
 const mapStateToProps = (state) => {
   const { products, currentCategory } = state[NameSpace.ShopData];
   return { products, currentCategory }
-}
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onCategoryChange(currentCategory) {
+    dispatch(fetchProductsAction(currentCategory));
+  },
+});
 
 class Category extends React.Component {
+  componentDidMount() {
+    this.props.onCategoryChange(this.props.currentCategory);
+  }
+  
   componentDidUpdate() {
     document.title = this.props.currentCategory.charAt(0).toUpperCase() + this.props.currentCategory.slice(1);
   }
@@ -32,4 +43,4 @@ class Category extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(Category);
+export default connect(mapStateToProps, mapDispatchToProps)(Category);
