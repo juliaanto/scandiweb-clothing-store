@@ -6,7 +6,7 @@ const Block = styled.div`
   display: flex;
   flex-direction: column;
   width: 325px;
-  overflow: scroll;
+  overflow-y: scroll;
   max-height: 60vh;
 `;
 
