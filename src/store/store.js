@@ -1,4 +1,4 @@
-import { fetchCategoriesAction, fetchCurrenciesAction, fetchProductsAction } from './api-actions';
+import { fetchCategoriesAction, fetchCurrenciesAction } from './api-actions';
 
 import client from '../services/client';
 import { configureStore } from '@reduxjs/toolkit';
@@ -41,7 +41,6 @@ store.subscribe(() => {
 });
 
 store.dispatch(fetchCategoriesAction());
-store.dispatch(fetchProductsAction(''));
 store.dispatch(fetchCurrenciesAction());
 
 export default store;

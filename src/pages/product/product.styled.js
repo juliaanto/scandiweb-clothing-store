@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Block = styled.div`
   display: flex;
@@ -14,6 +14,38 @@ Block.Preview = styled.div`
 Block.PreviewImage = styled.img`
   cursor: pointer;
   object-fit: cover;
+`;
+
+Block.ImageWrapper = styled.div`
+  position: relative;
+  height: min-content;
+
+${({ $isInStock }) =>
+    !$isInStock &&
+    css`
+      &:before {
+        display: block;
+        position: absolute;
+        content: "OUT OF STOCK";
+        font-size: 24px;
+        top: 50%;
+        text-align: center;
+        width: 100%;
+        transform: translateY(-100%);
+        color: ${({ theme }) => theme.color.basicGrey};
+      }
+      
+      &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color: ${({ theme }) => theme.color.basicWhite};
+        opacity: 0.5;
+        top: 0;
+        left: 0;
+      }
+  `}
 `;
 
 Block.Image = styled.img`

@@ -3,6 +3,7 @@ export const ActionType = {
   LoadCategories: 'data/loadCategories',
   LoadCurrencies: 'data/loadCurrencies',
   LoadProduct: 'data/loadProduct',
+  ResetProduct: 'data/resetProduct',
   UpdateCartList: 'user/updateCartList',
   ChangeCurrentCategory: 'data/changeCurrentCategory',
   ChangeCurrentCurrency: 'data/changeCurrentCurrency',
