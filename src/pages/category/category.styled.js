@@ -20,6 +20,7 @@ Block.List = styled.ul`
   column-gap: 40px;
   row-gap: 108px;
   margin: 0 auto;
+  list-style: none;
 `;
 
 export default Block;

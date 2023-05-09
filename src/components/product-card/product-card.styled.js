@@ -1,10 +1,19 @@
 import styled, { css } from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 const Block = styled.li`
   width: 386px;
-  padding: 16px;
   display: flex;
   position: relative;
+
+  & a {
+    z-index: 2;
+  }
+
+  & button {
+    z-index: 1;
+  }
 
   ${({ $isInStock }) =>
     $isInStock &&
@@ -14,15 +23,18 @@ const Block = styled.li`
         box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
       }
 
-      &:hover div {
-        z-index: 1;
+      &:hover button {
+        z-index: 3;
       }
   `}
 `;
 
+Block.Link = styled(Link)`
+  padding: 16px;
+`;
+
 Block.Wrapper = styled.div`
   margin: 0 auto;
-  z-index: 2;
   background-color: ${({ theme }) => theme.color.basicWhite};
 
   ${({ $isInStock }) =>
@@ -51,7 +63,6 @@ Block.Wrapper = styled.div`
         opacity: 0.5;
         top: 0;
       }
-    }
   `}
 `;
 

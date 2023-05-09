@@ -68,8 +68,7 @@ const Button = styled.button`
           border-radius: 50%;
           top: 320px;
           right: 30px;
-          z-index: 1;
-
+          
           & svg {
             fill: ${({ theme }) => theme.color.basicWhite};
             width: 24px;

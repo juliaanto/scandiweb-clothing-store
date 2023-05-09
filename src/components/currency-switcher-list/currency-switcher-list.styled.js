@@ -4,6 +4,7 @@ const Block = styled.ul`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+  list-style: none;
 `;
 
 Block.Item = styled.li`

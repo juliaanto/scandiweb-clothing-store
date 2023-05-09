@@ -1,5 +1,5 @@
 import { addProduct, getProductQuantity } from '../../utils/cart';
-import { updateCartList, updateQuantityInCart } from '../../store/action';
+import { resetProduct, updateCartList, updateQuantityInCart } from '../../store/action';
 
 import Block from './product.styled';
 import { Button } from '../../ui';
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateCartList(productList));
     dispatch(updateQuantityInCart(getProductQuantity()));
   },
+  onComponentUnmount() {
+    dispatch(resetProduct());
+  }
 });
 
 class Product extends React.Component {
@@ -40,8 +43,13 @@ class Product extends React.Component {
     return id;
   }
 
-  getDescription() {
-    return {__html: this.props.product?.description};
+  setDescription() {
+    const descriptionElement = document.querySelector("#description");
+    if (descriptionElement.childNodes.length > 0) {
+      return;
+    }
+    const description = new DOMParser().parseFromString(this.props.product?.description, 'text/html').body.firstChild;
+    descriptionElement.appendChild(description);
   }
 
   handleAddToCartClick() {
@@ -69,10 +77,11 @@ class Product extends React.Component {
   componentDidUpdate() {
     document.title = this.props.product?.brand + ' ' + this.props.product?.name;
     this.props.onProductChange(this.getProductId());
+    this.setDescription();
   }
 
   componentWillUnmount() {
-    this.props.onProductChange(null);
+    this.props.onComponentUnmount();
   }
 
   render() {
@@ -91,11 +100,17 @@ class Product extends React.Component {
               />
             ))}
           </Block.Preview>
-          <Block.Image src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} width={610} alt={this.props.product?.name}/>
+          <Block.ImageWrapper $isInStock={this.props.product?.inStock}>
+            <Block.Image 
+              src={this.state.currentImage ? this.state.currentImage : this.props.product?.gallery[0]} 
+              width={610} 
+              alt={this.props.product?.name}
+            />
+          </Block.ImageWrapper>
           <Block.Сharacteristics>
             <ProductDetails product={this.props.product} $styleType='product-page' $productIndex={this.props.productsInCart.indexOf(this.props.product)} />
             <Button disabled={!this.props.product?.inStock} onClick={() => this.handleAddToCartClick()}>Add to cart</Button>
-            <Block.Description dangerouslySetInnerHTML={this.getDescription()} />
+            <Block.Description id="description" />
           </Block.Сharacteristics>
         </Block>
       </Page>

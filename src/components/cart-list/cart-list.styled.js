@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 const Block = styled.ul`
   display: flex;
   flex-direction: column;
+  list-style: none;
   
   ${({ $isCartOverlay }) =>
     $isCartOverlay ?
