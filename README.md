@@ -3,7 +3,7 @@ Online store website
 
 
 ## General Information
-Data is loaded from a server that is deployed locally. 
+Data is loaded from a server that is deployed locally.  
 Server repository: [https://github.com/scandiweb/junior-react-endpoint](https://github.com/scandiweb/junior-react-endpoint).
 
 
@@ -23,7 +23,7 @@ Server repository: [https://github.com/scandiweb/junior-react-endpoint](https://
 
 
 ## How to run
-> **Note**
+> **Note**  
 > Before running the application, you need to start the server: [https://github.com/scandiweb/junior-react-endpoint](https://github.com/scandiweb/junior-react-endpoint).
 
 ```
