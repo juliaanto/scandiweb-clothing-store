@@ -23,15 +23,10 @@ Server repository: [https://github.com/scandiweb/junior-react-endpoint](https://
 
 
 ## How to run
-To clone and run this application (along with the server side):
+> **Note**
+> Before running the application, you need to start the server: [https://github.com/scandiweb/junior-react-endpoint](https://github.com/scandiweb/junior-react-endpoint).
 
 ```
-git clone https://github.com/scandiweb/junior-react-endpoint.git
-cd junior-react-endpoint
-yarn install
-yarn build
-yarn start &
-cd ..
 git clone https://github.com/juliaanto/scandiweb-shop.git
 cd scandiweb-shop
 npm install
